@@ -9,7 +9,11 @@ const NoteInput = (props) => {
   let itemTwo;
 
   const handleCreateNoteClick = () => {
+<<<<<<< HEAD
+    props.onCreateNote(title.value, 'red', [{ text: itemOne.value }, { text: itemTwo.value }]);
+=======
     props.onCreateNote(title.value, 'red', [itemOne.value, itemTwo.value]);
+>>>>>>> de023d2631837a1e48831a5bca93c9d9e5559181
   };
 
   return (
