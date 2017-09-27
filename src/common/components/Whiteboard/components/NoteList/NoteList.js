@@ -10,7 +10,7 @@ const NoteList = props => (
         id={note.id}
         title={note.title}
         color={note.color}
-        items={note.items}
+        information={note.information}
       />
     ))}
   </div>
