@@ -8,6 +8,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  handleCreateNote: (value) => {
+    dispatch(addNote(value));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NotesWrapper);

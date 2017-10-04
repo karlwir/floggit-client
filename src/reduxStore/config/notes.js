@@ -44,13 +44,13 @@ const reducer = (state = initialState, action) => {
 };
 
 // ACTION CREATORS
-const internalAddNote = (id, title, color, information) => ({
+const internalAddNote = value => ({
   type: NOTE_ADD,
   data: {
-    id,
-    title,
-    color,
-    information,
+    id: value.id,
+    title: value.title,
+    color: value.color,
+    information: value.information,
   },
 });
 
@@ -82,9 +82,11 @@ const internalLoadedNotes = () => ({
 });
 
 // THUNK
-const addNote = (title, color, information) => dispatch => notesAPI.add(title, color, information)
+const addNote = value => dispatch => notesAPI.add(value.title, value.color, value.information)
   .then((id) => {
-    dispatch(internalAddNote(id, title, color, information));
+    const newValue = value;
+    newValue.id = id;
+    dispatch(internalAddNote(newValue));
   });
 
 const removeNote = id => dispatch => notesAPI.remove(id)
