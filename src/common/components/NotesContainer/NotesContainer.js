@@ -11,7 +11,6 @@ const mapDispatchToProps = dispatch => ({
   handleCreateNote: (value) => {
     dispatch(addNote(value));
   },
-  // handleAddItem: 
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NotesWrapper);

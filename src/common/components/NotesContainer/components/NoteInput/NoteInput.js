@@ -14,7 +14,6 @@ const NoteInput = (props) => {
       color: 'red',
       information: [{ text: itemOne.value }, { text: itemTwo.value }],
     };
-    // title.value, 'red', [{ text: itemOne.value }, { text: itemTwo.value }]
     props.onCreateNote(value);
   };
 
