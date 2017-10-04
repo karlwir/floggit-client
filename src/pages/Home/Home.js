@@ -1,9 +1,9 @@
 import React from 'react';
-import Whiteboard from '../../common/components/Whiteboard';
+import NotesContainer from '../../common/components/NotesContainer';
 
 const Home = () => (
   <div>
-    <Whiteboard />
+    <NotesContainer />
   </div>
 );
 

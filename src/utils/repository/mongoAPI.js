@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const SERVICE_URL = 'http://127.0.0.1:8081';
+const SERVICE_URL = 'https://floggit-service.herokuapp.com';
 
 const validateStatus = status => (response) => {
   if (response.status !== status) {
