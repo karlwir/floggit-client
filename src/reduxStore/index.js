@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import reducer from './config/notes';
+import reducer from './config/';
 import { loadNotes } from './config/notes';
 
 /* eslint-disable no-underscore-dangle */

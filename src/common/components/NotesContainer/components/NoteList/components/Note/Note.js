@@ -9,7 +9,7 @@ const Note = props => (
             items:
     <ul>
       {props.information.map(item => (
-        <li> {item.text} </li>
+        <li key={Math.random()}> {item.text} </li>
       ))}
     </ul>
   </div>
