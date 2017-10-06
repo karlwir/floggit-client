@@ -9,7 +9,7 @@ const propTypes = {
       text: PropTypes.string.isRequired,
     })),
   })),
-  handleCreateNote: PropTypes.func.isRequired,
+  handleRemoveNote: PropTypes.func.isRequired,
 };
 
 export default propTypes;
