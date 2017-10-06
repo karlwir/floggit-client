@@ -26,7 +26,7 @@ class NoteForm extends React.Component {
   }
 
   handleSaveNote() {
-    this.props.onSaveNote(this.props);
+    this.props.onSaveNote();
   }
 
   render() {

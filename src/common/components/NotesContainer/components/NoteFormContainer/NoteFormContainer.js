@@ -6,6 +6,7 @@ import { updateTitle, updateColor, addInfoItem, saveNote } from '../../../../../
 const mapStateToProps = state => ({
   title: state.noteForm.title,
   color: state.noteForm.color,
+  isLoading: state.notes.isLoading,
   information: state.noteForm.information,
 });
 
@@ -19,13 +20,8 @@ const mapDispatchToProps = dispatch => ({
   onAddInfoItem: (value) => {
     dispatch(addInfoItem(value));
   },
-  onSaveNote: (value) => {
-    const newNote = Object.assign({},
-      { title: value.title },
-      { color: value.color },
-      { information: value.information },
-    );
-    dispatch(saveNote(newNote));
+  onSaveNote: () => {
+    dispatch(saveNote());
   },
 });
 

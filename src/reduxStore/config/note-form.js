@@ -11,6 +11,7 @@ const initialState = {
   title: '',
   color: '#cccccc',
   information: [],
+  validNote: false,
 };
 
 // REDUCER
@@ -62,7 +63,8 @@ const internalFormReset = () => ({
   type: NOTEFORM_RESET,
 });
 
-const saveNote = value => dispatch => dispatch(addNote(value))
+const saveNote = () => (dispatch, getState) => dispatch(
+  addNote(getState().noteForm))
   .then(() => {
     dispatch(internalFormReset());
   });
