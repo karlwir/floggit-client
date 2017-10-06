@@ -8,7 +8,7 @@ import notesWrapperProps from './NotesWrapper.props';
 const NotesWrapper = props => (
   <div className="NotesContainer-wrapper">
     <NoteFormContainer />
-    <NoteList notes={props.notes} />
+    <NoteList notes={props.notes} onRemoveNote={props.handleRemoveNote} />
   </div>
 );
 

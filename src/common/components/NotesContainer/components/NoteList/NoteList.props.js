@@ -9,6 +9,7 @@ const props = {
       text: PropTypes.string.isRequired,
     })),
   })),
+  onRemoveNote: PropTypes.func.isRequired,
 };
 
 export default props;
