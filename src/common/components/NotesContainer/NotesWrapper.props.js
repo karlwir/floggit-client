@@ -10,7 +10,6 @@ const propTypes = {
     })),
   })),
   handleCreateNote: PropTypes.func.isRequired,
-  handleAddItem: PropTypes.func.isRequired,
 };
 
 export default propTypes;

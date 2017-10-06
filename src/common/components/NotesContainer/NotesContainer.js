@@ -4,7 +4,7 @@ import NotesWrapper from './NotesWrapper';
 import { addNote, removeNote, updateNote, loadNotes } from '../../../reduxStore/config/notes';
 
 const mapStateToProps = state => ({
-  notes: state.data,
+  notes: state.notes.data,
 });
 
 const mapDispatchToProps = dispatch => ({
