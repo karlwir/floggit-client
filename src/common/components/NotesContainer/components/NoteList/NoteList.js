@@ -3,17 +3,19 @@ import Note from './components/Note';
 import noteListProps from './NoteList.props';
 
 const NoteList = props => (
-  <div>
+  <ul>
     {props.notes.map(note => (
-      <Note
-        key={note.id}
-        id={note.id}
-        title={note.title}
-        color={note.color}
-        information={note.information}
-      />
+      <li>
+        <Note
+          key={note.id}
+          id={note.id}
+          title={note.title}
+          color={note.color}
+          information={note.information}
+        />
+      </li>
     ))}
-  </div>
+  </ul>
 );
 
 NoteList.propTypes = noteListProps;
