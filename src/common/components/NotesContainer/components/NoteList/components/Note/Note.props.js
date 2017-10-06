@@ -7,6 +7,7 @@ const props = {
   information: PropTypes.arrayOf(PropTypes.shape({
     text: PropTypes.string.isRequired,
   })),
+  onRemoveNote: PropTypes.func.isRequired,
 };
 
 export default props;

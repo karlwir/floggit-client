@@ -38,12 +38,12 @@ class NoteForm extends React.Component {
           onChange={this.handleChangeTitle}
           placeholder="Title"
         /><br />
-        <input
-          type="color"
-          value={this.props.color}
-          onChange={this.handleChangeColor}
-          placeholder="Title"
-        /><br />
+        <select onChange={this.handleChangeColor}>
+          <option value="#FF0000"> Red </option>
+          <option value="#00FF00"> Green </option>
+          <option value="#0000FF"> Blue</option>
+          <option value="#DEED3B"> Pasta</option>
+        </select><br />
         <input
           type="text"
           placeholder="Add item.."
