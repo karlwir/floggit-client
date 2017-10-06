@@ -1,0 +1,12 @@
+.NoteList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+}
+
+.NoteForm-wrapper {
+  background: var(--color-gray-semi);
+  margin: var(--space-small);
+  padding: var(--space-default);
+  display: inline-block;
+}

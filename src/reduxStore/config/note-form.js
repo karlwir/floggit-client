@@ -9,7 +9,7 @@ const NOTEFORM_RESET = 'NOTEFORM_RESET';
 
 const initialState = {
   title: '',
-  color: '#cccccc',
+  color: 'DEFAULT',
   information: [],
   validNote: false,
 };
