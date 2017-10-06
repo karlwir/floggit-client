@@ -5,10 +5,11 @@ const Note = props => (
   <div>
     <h2>{props.title}</h2><br />
             id: {props.id} <br />
-            Items:
+            color: {props.color} <br />
+            items:
     <ul>
       {props.information.map(item => (
-        <li> {item.text} </li>
+        <li key={Math.random()}> {item.text} </li>
       ))}
     </ul>
   </div>
