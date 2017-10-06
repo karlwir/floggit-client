@@ -9,7 +9,10 @@ const validateStatus = status => (response) => {
   return response;
 };
 
-const get = () => {};
+const get = id => axios.get(`${SERVICE_URL}/v1/notes/${id}`)
+  .then(validateStatus(200))
+  .then(response => response.data)
+  .catch(err => err.message);
 
 const getAll = () => axios.get(`${SERVICE_URL}/v1/notes`)
   .then(validateStatus(200))
@@ -36,7 +39,10 @@ const add = (title, color, information) =>
     .then(response => response.data.id)
     .catch(err => err.message);
 
-const remove = () => {};
+const remove = id => axios.delete(`${SERVICE_URL}/v1/notes/${id}`)
+  .then(validateStatus(204))
+  .then(response => console.dir(response))
+  .catch(err => err.message);
 
 const publicAPI = {
   get,
