@@ -1,11 +1,12 @@
 import React from 'react';
 import Note from './components/Note';
 import noteListProps from './NoteList.props';
+import './note-list.css';
 
 const NoteList = props => (
-  <ul>
+  <ul className="NoteList">
     {props.notes.map(note => (
-      <li>
+      <li key={note.id} className={`Note ${note.color}`}>
         <Note
           key={note.id}
           id={note.id}

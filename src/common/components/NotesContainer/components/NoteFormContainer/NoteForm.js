@@ -1,6 +1,7 @@
 import React from 'react';
 
 import noteFormProps from './NoteForm.props';
+import './note-form.css';
 
 class NoteForm extends React.Component {
   constructor(props) {
@@ -32,31 +33,66 @@ class NoteForm extends React.Component {
   render() {
     return (
       <div className="NoteForm-wrapper">
+        <h3>Create new note</h3>
         <input
           type="text"
           value={this.props.title}
           onChange={this.handleChangeTitle}
-          placeholder="Title"
+          placeholder="Add title"
         /><br />
-        <select onChange={this.handleChangeColor}>
-          <option value="#FF0000"> Red </option>
-          <option value="#00FF00"> Green </option>
-          <option value="#0000FF"> Blue</option>
-          <option value="#DEED3B"> Pasta</option>
-        </select><br />
-        <input
-          type="text"
-          placeholder="Add item.."
-          ref={(c) => { this.infoItemInput = c; }}
-        /><br />
-        <button type="button" onClick={this.handleAddInfoItem}>
-          Add item
-        </button>
-        <ul>
+        <div className="one-line-input">
+          <input
+            type="text"
+            placeholder="Add information"
+            ref={(c) => { this.infoItemInput = c; }}
+          /><br />
+          <button type="button" onClick={this.handleAddInfoItem}>
+            Add
+          </button>
+          </div>
+        <ul className="generic-list info-list">
           {this.props.information.map(infoItem => (
             <li key={Math.random()}>{infoItem.text}</li>
           ))}
         </ul>
+        <div className="color-selectors">
+          <input
+            type="radio"
+            className="color-select DEFAULT"
+            value="DEFAULT"
+            name="color"
+            id="color1"
+            checked={this.props.color === 'DEFAULT'}
+            onChange={this.handleChangeColor}
+          />
+          <input
+            type="radio"
+            className="color-select SUCCESS"
+            value="SUCCESS"
+            name="color"
+            id="color2"
+            checked={this.props.color === 'SUCCESS'}
+            onChange={this.handleChangeColor}
+          />
+          <input
+            type="radio"
+            className="color-select INFO"
+            value="INFO"
+            name="color"
+            id="color3"
+            checked={this.props.color === 'INFO'}
+            onChange={this.handleChangeColor}
+          />
+          <input
+            type="radio"
+            className="color-select DANGER"
+            value="DANGER"
+            name="color"
+            id="color4"
+            checked={this.props.color === 'DANGER'}
+            onChange={this.handleChangeColor}
+          />
+        </div>
         <button type="button" onClick={this.handleSaveNote}>
           Save Note
         </button>
