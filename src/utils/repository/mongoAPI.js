@@ -41,14 +41,33 @@ const add = (title, color, information) =>
 
 const remove = id => axios.delete(`${SERVICE_URL}/v1/notes/${id}`)
   .then(validateStatus(204))
-  .then(response => console.dir(response))
   .catch(err => err.message);
+
+const update = value =>
+  axios({
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    method: 'PUT',
+    url: `${SERVICE_URL}/v1/notes/${value.id}`,
+    data: JSON.stringify({
+      id: value.id,
+      title: value.title,
+      color: value.color,
+      information: value.information,
+    }),
+  })
+    .then(validateStatus(204))
+    .then(response => console.dir(response))
+    .catch(err => err.message);
 
 const publicAPI = {
   get,
   getAll,
   add,
   remove,
+  update,
 };
 
 export default publicAPI;

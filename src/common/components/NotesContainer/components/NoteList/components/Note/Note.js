@@ -6,7 +6,7 @@ const Note = (props) => {
     props.onRemoveNote(props.id);
   };
   const edit = () => {
-    alert('tjena');
+    props.onUpdateNote(props);
   };
 
   return (
@@ -17,7 +17,7 @@ const Note = (props) => {
           <li key={item.id}> {item.text} </li>
         ))}
       </ul>
-      <button className="icon-button" type="button" onClick={remove}>
+      <button className="icon-button danger" type="button" onClick={remove}>
         <i className="fa fa-trash fa-lg" />
       </button>
       <button className="icon-button" type="button" onClick={edit}>

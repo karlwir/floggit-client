@@ -14,6 +14,7 @@ const NoteList = props => (
           color={note.color}
           information={note.information}
           onRemoveNote={props.onRemoveNote}
+          onUpdateNote={props.onUpdateNote}
         />
       </li>
     ))}
