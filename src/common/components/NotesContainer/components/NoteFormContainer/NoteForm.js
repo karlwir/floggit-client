@@ -43,6 +43,12 @@ class NoteForm extends React.Component {
   render() {
     return (
       <div className={`NoteForm-wrapper ${this.props.activeForm ? 'shown' : 'hidden'}`}>
+        <div
+          className="shade-click-area"
+          onClick={this.handleCloseForm}
+          tabIndex={-1}
+          role="link"
+        />
         <div className="NoteForm">
           <button className="icon-button close" type="button" onClick={this.handleCloseForm}>
             <i className="fa fa-close" />

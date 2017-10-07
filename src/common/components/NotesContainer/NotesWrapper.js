@@ -9,6 +9,7 @@ import notesWrapperProps from './NotesWrapper.props';
 const NotesWrapper = props => (
   <div className="NotesContainer-wrapper">
     <NoteFormContainer />
+    <h1>Flogg<strong>It</strong></h1>
     <button type="button" onClick={props.handleCreateNoteNote}>Create new note</button>
     <NoteList
       className="NoteList"
