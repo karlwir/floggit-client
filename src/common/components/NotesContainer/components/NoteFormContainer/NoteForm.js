@@ -59,7 +59,7 @@ class NoteForm extends React.Component {
           {this.props.information.map(infoItem => (
             <li key={infoItem.id}>{infoItem.text}
               <button
-                className="icon-button"
+                className="icon-button danger"
                 type="button"
                 onClick={() => this.handleRemoveInfoItem(infoItem.id)}
               >

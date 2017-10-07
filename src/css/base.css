@@ -67,9 +67,13 @@ button.icon-button {
 }
 
 button.icon-button:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   background-color: rgba(255,255,255,0.9);
   color: var(--color-primary)
+}
+
+button.icon-button.danger:hover {
+  color: var(--color-note-danger);
 }
 
 input {
