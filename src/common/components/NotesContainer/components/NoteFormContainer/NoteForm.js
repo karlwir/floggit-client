@@ -10,6 +10,7 @@ class NoteForm extends React.Component {
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangeColor = this.handleChangeColor.bind(this);
     this.handleAddInfoItem = this.handleAddInfoItem.bind(this);
+    this.handleRemoveInfoItem = this.handleRemoveInfoItem.bind(this);
     this.handleSaveNote = this.handleSaveNote.bind(this);
   }
 
@@ -24,6 +25,10 @@ class NoteForm extends React.Component {
   handleAddInfoItem() {
     this.props.onAddInfoItem(this.infoItemInput.value);
     this.infoItemInput.value = '';
+  }
+
+  handleRemoveInfoItem(id) {
+    this.props.onRemoveInfoItem(id);
   }
 
   handleSaveNote() {
@@ -49,10 +54,18 @@ class NoteForm extends React.Component {
           <button type="button" onClick={this.handleAddInfoItem}>
             Add
           </button>
-          </div>
+        </div>
         <ul className="generic-list info-list">
           {this.props.information.map(infoItem => (
-            <li key={Math.random()}>{infoItem.text}</li>
+            <li key={infoItem.id}>{infoItem.text}
+              <button
+                className="icon-button"
+                type="button"
+                onClick={() => this.handleRemoveInfoItem(infoItem.id)}
+              >
+                <i className="fa fa-trash" />
+              </button>
+            </li>
           ))}
         </ul>
         <div className="color-selectors">
