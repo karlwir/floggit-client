@@ -1,4 +1,5 @@
 import { addNote } from './notes';
+import { generateId } from '../../utils/helpers/uid-generator';
 
 // ACTIONS
 const NOTEFORM_UPDATE_TITLE = 'NOTEFORM_UPDATE_TITLE';
@@ -28,7 +29,8 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, { information: newInformation });
     }
     case NOTEFORM_REMOVE_INFOITEM: {
-      return state.infoItems.filter(infoItem => infoItem.text !== action.value.text);
+      const newInformation = state.information.filter(infoItem => infoItem.id !== action.value);
+      return Object.assign({}, state, { information: newInformation });
     }
     case NOTEFORM_RESET: {
       return Object.assign({}, initialState);
@@ -51,7 +53,10 @@ const updateColor = value => ({
 
 const addInfoItem = info => ({
   type: NOTEFORM_ADD_INFOITEM,
-  value: { text: info },
+  value: {
+    id: generateId(),
+    text: info,
+  },
 });
 
 const removeInfoItem = value => ({

@@ -14,7 +14,7 @@ const Note = (props) => {
       <h2>{props.title}</h2>
       <ul className="generic-list">
         {props.information.map(item => (
-          <li key={Math.random()}> {item.text} </li>
+          <li key={item.id}> {item.text} </li>
         ))}
       </ul>
       <button className="icon-button" type="button" onClick={remove}>

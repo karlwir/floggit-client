@@ -5,6 +5,7 @@ const props = {
   title: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   information: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
   })),
   onRemoveNote: PropTypes.func.isRequired,

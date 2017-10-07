@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import NoteForm from './NoteForm';
-import { updateTitle, updateColor, addInfoItem, saveNote } from '../../../../../reduxStore/config/note-form';
+import { updateTitle, updateColor, addInfoItem, removeInfoItem, saveNote } from '../../../../../reduxStore/config/note-form';
 
 const mapStateToProps = state => ({
   title: state.noteForm.title,
@@ -19,6 +19,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onAddInfoItem: (value) => {
     dispatch(addInfoItem(value));
+  },
+  onRemoveInfoItem: (value) => {
+    dispatch(removeInfoItem(value));
   },
   onSaveNote: () => {
     dispatch(saveNote());
