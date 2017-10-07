@@ -25,6 +25,11 @@
   outline: none;
   border: 2px solid transparent;
   cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+.color-select:hover {
+  transform: scale(1.1);
 }
 
 .color-select:checked {
