@@ -1,0 +1,53 @@
+.one-line-input {
+  display: flex;
+  margin-bottom: var(--space-default);
+}
+
+.one-line-input input {
+  border-radius: .25rem 0 0 .25rem;
+  flex: 1;
+}
+
+.one-line-input button {
+  border-radius: 0 .25rem .25rem 0;
+}
+
+.color-selectors {
+  margin-bottom: var(--space-small);
+}
+
+.color-select {
+  appearance: none;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  display: inline-block;
+  outline: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+.color-select:hover {
+  transform: scale(1.1);
+}
+
+.color-select:checked {
+  box-shadow: 0 0 0 2px var(--color-gray-dark);
+}
+
+.color-select.DEFAULT {
+  background-color: var(--color-note-default)
+}
+
+.color-select.INFO {
+  background-color: var(--color-note-info)
+}
+
+.color-select.SUCCESS {
+  background-color: var(--color-note-success)
+}
+
+.color-select.DANGER {
+  background-color: var(--color-note-danger)
+}

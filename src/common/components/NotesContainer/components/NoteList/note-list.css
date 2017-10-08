@@ -1,0 +1,48 @@
+@import '../../../../../css/variables/spacers.css';
+@import '../../../../../css/variables/colors.css';
+
+li.Note {
+  display: inline-block;
+  margin: var(--space-small);
+  padding: var(--space-default) var(--space-default) var(--space-extra);
+  position: relative;
+  width: 100%;
+  min-width: 280px;
+  max-width: 280px;
+
+  animation: jumpIn 100ms ease-out;
+}
+
+li.Note.DEFAULT {
+  background: linear-gradient(-45deg, transparent, transparent 	1.41421rem, var(--color-note-default) 	1.41421rem, var(--color-note-default));
+}
+
+li.Note.INFO {
+  background-color: var(--color-note-blue);
+  background: linear-gradient(-45deg, transparent, transparent 	1.41421rem, var(--color-note-info) 	1.41421rem, var(--color-note-info));
+}
+
+li.Note.DANGER {
+  background-color: var(--color-note-red);
+  background: linear-gradient(-45deg, transparent, transparent 	1.41421rem, var(--color-note-danger) 	1.41421rem, var(--color-note-danger));
+}
+
+li.Note.SUCCESS {
+  background-color: var(--color-note-green);
+  background: linear-gradient(-45deg, transparent, transparent 	1.41421rem, var(--color-note-success) 	1.41421rem, var(--color-note-success));
+}
+
+@keyframes jumpIn {
+    0%   {transform: scale(0);}
+    100% {transform: scale(1)}
+}
+
+li.Note:before {
+   content: "";
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   border-width: 2rem 2rem 0 0;
+   border-style: solid;
+   border-color: rgba(0,0,0,.15) transparent;
+}

@@ -5,20 +5,23 @@ const Note = (props) => {
   const remove = () => {
     props.onRemoveNote(props.id);
   };
+  const edit = () => {
+    alert('tjena');
+  };
 
   return (
     <div>
-      <h2>{props.title}</h2><br />
-            id: {props.id} <br />
-            color: {props.color} <br />
-            items:
-      <ul>
+      <h2>{props.title}</h2>
+      <ul className="generic-list">
         {props.information.map(item => (
-          <li key={Math.random()}> {item.text} </li>
+          <li key={item.id}> {item.text} </li>
         ))}
       </ul>
-      <button type="button" onClick={remove}>
-      Remove Note
+      <button className="icon-button danger" type="button" onClick={remove}>
+        <i className="fa fa-trash fa-lg" />
+      </button>
+      <button className="icon-button" type="button" onClick={edit}>
+        <i className="fa fa-pencil fa-lg" />
       </button>
     </div>
   );
