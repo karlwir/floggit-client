@@ -20,7 +20,11 @@ h6 {
 
 h1 {
   font-size: var(--font-size-xl);
-  line-height: 1;
+  line-height: 1.5;
+}
+
+h1 strong {
+  font-weight: var(--font-weight-extrabold);
 }
 
 h2 {
@@ -64,6 +68,11 @@ button.icon-button {
   width: 2rem;
   height: 2rem;
   outline: none;
+}
+
+button.icon-button.close {
+  float: right;
+  margin: -.5rem -.5rem 0 0;
 }
 
 button.icon-button:hover {

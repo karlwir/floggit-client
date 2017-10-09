@@ -11,6 +11,7 @@ const props = {
     })),
   })),
   onRemoveNote: PropTypes.func.isRequired,
+  onUpdateNote: PropTypes.func.isRequired,
 };
 
 export default props;

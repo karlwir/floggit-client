@@ -11,6 +11,7 @@ const propTypes = {
     })),
   })),
   handleRemoveNote: PropTypes.func.isRequired,
+  handleUpdateNote: PropTypes.func.isRequired,
 };
 
 export default propTypes;

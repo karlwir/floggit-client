@@ -3,7 +3,7 @@
 
 li.Note {
   display: inline-block;
-  margin: var(--space-small);
+  margin: var(--space-small) var(--space-small) 0 0;
   padding: var(--space-default) var(--space-default) var(--space-extra);
   position: relative;
   width: 100%;
