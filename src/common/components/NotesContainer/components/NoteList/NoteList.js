@@ -6,7 +6,7 @@ import './note-list.css';
 const NoteList = props => (
   <ul className="NoteList">
     {props.notes.map(note => (
-      <li key={note.id} className={`Note ${note.color}`}>
+      <li key={note.id}>
         <Note
           key={note.id}
           id={note.id}

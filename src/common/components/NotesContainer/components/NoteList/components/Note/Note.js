@@ -1,6 +1,8 @@
 import React from 'react';
 import notePropTypes from './Note.props';
 
+import './note.css';
+
 const Note = (props) => {
   const remove = () => {
     props.onRemoveNote(props.id);
@@ -10,7 +12,7 @@ const Note = (props) => {
   };
 
   return (
-    <div>
+    <div className={`Note ${props.color}`}>
       <h2>{props.title}</h2>
       <ul className="generic-list">
         {props.information.map(item => (

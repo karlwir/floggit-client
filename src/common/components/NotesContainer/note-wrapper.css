@@ -1,33 +1,3 @@
-.NoteList {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: start;
-}
-
 .NotesContainer-wrapper {
   padding: var(--space-default);
-}
-
-.NoteForm-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.NoteForm-wrapper.hidden {
-  display: none;
-}
-
-.NoteForm {
-  background: var(--color-gray-semi);
-  margin: var(--space-small);
-  padding: var(--space-default);
-  display: inline-block;
 }
