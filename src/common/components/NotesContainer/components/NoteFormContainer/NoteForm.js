@@ -2,6 +2,8 @@ import React from 'react';
 
 import noteFormProps from './NoteForm.props';
 import './note-form.css';
+import ColorSelect from './components/ColorSelect';
+import {NOTE_COLORS} from '../../../../../utils/constants';
 
 const NoteForm = (props) => {
   let infoItemInput;
@@ -55,7 +57,7 @@ const NoteForm = (props) => {
             type="text"
             placeholder="Add information"
             ref={(c) => { infoItemInput = c; }}
-          /><br />
+          />
           <button type="button" onClick={handleAddInfoItem}>
               Add
           </button>
@@ -73,44 +75,11 @@ const NoteForm = (props) => {
             </li>
           ))}
         </ul>
-        <div className="color-selectors">
-          <input
-            type="radio"
-            className="color-select DEFAULT"
-            value="DEFAULT"
-            name="color"
-            id="color1"
-            checked={props.color === 'DEFAULT'}
-            onChange={handleChangeColor}
-          />
-          <input
-            type="radio"
-            className="color-select SUCCESS"
-            value="SUCCESS"
-            name="color"
-            id="color2"
-            checked={props.color === 'SUCCESS'}
-            onChange={handleChangeColor}
-          />
-          <input
-            type="radio"
-            className="color-select INFO"
-            value="INFO"
-            name="color"
-            id="color3"
-            checked={props.color === 'INFO'}
-            onChange={handleChangeColor}
-          />
-          <input
-            type="radio"
-            className="color-select DANGER"
-            value="DANGER"
-            name="color"
-            id="color4"
-            checked={props.color === 'DANGER'}
-            onChange={handleChangeColor}
-          />
-        </div>
+        <ColorSelect
+          colors={NOTE_COLORS}
+          selectedColor={props.color}
+          onColorUpdate={handleChangeColor}
+        />
         <button type="button" onClick={handleSaveNote}>
           {props.id ? 'Update note' : 'Save Note'}
         </button>
