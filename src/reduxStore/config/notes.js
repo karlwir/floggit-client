@@ -25,7 +25,6 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, { data: newNotes });
     }
     case NOTE_UPDATE: {
-      // DO STUFF
       const newNotes = state.data.map((note) => {
         if (note.id === action.data.id) {
           return action.data;
