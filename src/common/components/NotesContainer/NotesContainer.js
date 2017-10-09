@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import NotesWrapper from './NotesWrapper';
-import { removeNote, updateNote, loadNotes } from '../../../reduxStore/config/notes';
+import { removeNote } from '../../../reduxStore/config/notes';
 import { openForm, loadNote } from '../../../reduxStore/config/note-form';
 
 const mapStateToProps = state => ({
