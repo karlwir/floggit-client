@@ -4,6 +4,6 @@
   align-items: start;
 }
 
-.NoteList li {
+.NoteList > li {
   display: inline-block;
 }
