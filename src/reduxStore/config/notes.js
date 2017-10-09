@@ -25,10 +25,12 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, { data: newNotes });
     }
     case NOTE_UPDATE: {
-      // DO STUFF
-      console.log(action.data);
-      const otherNotes = state.data.filter(note => note.id !== action.data.id);
-      const newNotes = [...otherNotes, action.data];
+      const newNotes = state.data.map((note) => {
+        if (note.id === action.data.id) {
+          return action.data;
+        }
+        return note;
+      });
       return Object.assign({}, state, { data: newNotes });
     }
     case NOTES_LIST_REPLACE: {

@@ -59,7 +59,6 @@ const update = value =>
     }),
   })
     .then(validateStatus(204))
-    .then(response => console.dir(response))
     .catch(err => err.message);
 
 const publicAPI = {
