@@ -1,3 +1,7 @@
 .NotesContainer-wrapper {
   padding: var(--space-default);
 }
+
+button.create-note-button {
+  margin-bottom: var(--space-default);
+}
