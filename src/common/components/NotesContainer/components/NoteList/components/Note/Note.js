@@ -6,7 +6,7 @@ const Note = (props) => {
     props.onRemoveNote(props.id);
   };
   const edit = () => {
-    alert('tjena');
+    props.onUpdateNote(props);
   };
 
   return (
