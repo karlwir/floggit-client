@@ -2,10 +2,29 @@
   padding: var(--space-default);
 }
 
+.NotesContainer-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 button.create-note-button {
+  margin-right: var(--space-extra);
   margin-bottom: var(--space-default);
 }
 
 input.filter-text-input {
+  display: inline-block;
+  margin:0 var(--space-default) var(--space-default) 0;
+}
+
+.NotesContainer-toolbar div.search-message {
+  display: inline-block;
+  font-size: var(--font-size-s);
   margin-bottom: var(--space-default);
+}
+
+.NotesContainer-toolbar div.search-message strong {
+  font-size: var(--font-size-default);
+  font-weight: var(--font-weight-extrabold);
+  margin: 0 var(--space-small);
 }
