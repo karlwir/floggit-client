@@ -1,18 +1,21 @@
-import { addNote } from './notes';
+import { addNote, updateNote } from './notes';
 import { generateId } from '../../utils/helpers/uid-generator';
 
 // ACTIONS
+const NOTEFORM_LOAD_NOTE = 'NOTEFORM_LOAD_NOTE';
 const NOTEFORM_UPDATE_TITLE = 'NOTEFORM_UPDATE_TITLE';
 const NOTEFORM_UPDATE_COLOR = 'NOTEFORM_UPDATE_COLOR';
 const NOTEFORM_ADD_INFOITEM = 'NOTEFORM_ADD_INFOITEM';
 const NOTEFORM_REMOVE_INFOITEM = 'NOTEFORM_REMOVE_INFOITEM';
 const NOTEFORM_RESET = 'NOTEFORM_RESET';
+const NOTEFORM_OPEN = 'NOTEFORM_OPEN';
 
 const initialState = {
+  id: null,
   title: '',
   color: 'DEFAULT',
   information: [],
-  validNote: false,
+  activeForm: false,
 };
 
 // REDUCER
@@ -20,6 +23,9 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case NOTEFORM_UPDATE_TITLE: {
       return Object.assign({}, state, { title: action.value });
+    }
+    case NOTEFORM_LOAD_NOTE: {
+      return Object.assign({}, action.value, { activeForm: true });
     }
     case NOTEFORM_UPDATE_COLOR: {
       return Object.assign({}, state, { color: action.value });
@@ -35,12 +41,20 @@ const reducer = (state = initialState, action) => {
     case NOTEFORM_RESET: {
       return Object.assign({}, initialState);
     }
+    case NOTEFORM_OPEN: {
+      return Object.assign({}, initialState, { activeForm: true });
+    }
     default:
       return state;
   }
 };
 
 // ACTION CREATORS
+const loadNote = value => ({
+  type: NOTEFORM_LOAD_NOTE,
+  value,
+});
+
 const updateTitle = value => ({
   type: NOTEFORM_UPDATE_TITLE,
   value,
@@ -64,15 +78,38 @@ const removeInfoItem = value => ({
   value,
 });
 
-const internalFormReset = () => ({
+const closeForm = () => ({
   type: NOTEFORM_RESET,
 });
 
-const saveNote = () => (dispatch, getState) => dispatch(
-  addNote(getState().noteForm))
-  .then(() => {
-    dispatch(internalFormReset());
-  });
+const openForm = () => ({
+  type: NOTEFORM_OPEN,
+});
 
-export { updateTitle, updateColor, addInfoItem, removeInfoItem, saveNote };
+const saveNote = () => (dispatch, getState) => {
+  if (!getState().noteForm.id) {
+    dispatch(
+      addNote(getState().noteForm))
+      .then(() => {
+        dispatch(closeForm());
+      });
+  } else {
+    dispatch(
+      updateNote(getState().noteForm))
+      .then(() => {
+        dispatch(closeForm());
+      });
+  }
+};
+
+export {
+  openForm,
+  closeForm,
+  loadNote,
+  updateTitle,
+  updateColor,
+  addInfoItem,
+  removeInfoItem,
+  saveNote,
+};
 export default reducer;

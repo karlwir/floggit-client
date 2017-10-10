@@ -3,7 +3,7 @@ import notesAPI from '../../utils/repository/mongoAPI';
 // ACTIONS
 const NOTE_ADD = 'NOTES_ADD';
 const NOTE_REMOVE = 'NOTES_REMOVE';
-const NOTE_UPDATE = 'NOTES_REMOVE';
+const NOTE_UPDATE = 'NOTE_UPDATE';
 const NOTES_LIST_REPLACE = 'NOTES_LIST_REPLACE';
 const NOTES_LOADING = 'NOTES_LOADING';
 const NOTES_LOADED = 'NOTES_LOADED';
@@ -25,8 +25,13 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, { data: newNotes });
     }
     case NOTE_UPDATE: {
-      // DO STUFF
-      return state;
+      const newNotes = state.data.map((note) => {
+        if (note.id === action.data.id) {
+          return action.data;
+        }
+        return note;
+      });
+      return Object.assign({}, state, { data: newNotes });
     }
     case NOTES_LIST_REPLACE: {
       const newNotes = [...action.data.notes];
@@ -59,10 +64,14 @@ const internalRemoveNote = id => ({
   data: { id },
 });
 
-const internalUpdateNote = id => ({
-  // FIX THIS
+const internalUpdateNote = value => ({
   type: NOTE_UPDATE,
-  data: { id },
+  data: {
+    id: value.id,
+    title: value.title,
+    color: value.color,
+    information: value.information,
+  },
 });
 
 
@@ -94,11 +103,10 @@ const removeNote = id => dispatch => notesAPI.remove(id)
     dispatch(internalRemoveNote(id));
   });
 
-  // FIX THIS
-const updateNote = (id, title, color, information) => dispatch =>
-  notesAPI.update(id, title, color, information)
+const updateNote = value => dispatch =>
+  notesAPI.update(value)
     .then(() => {
-      dispatch(internalUpdateNote(id, title, color, information));
+      dispatch(internalUpdateNote(value));
     });
 
 const loadNotes = () => (dispatch) => {

@@ -1,3 +1,34 @@
+.NoteForm-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.NoteForm-wrapper.hidden {
+  display: none;
+}
+
+.NoteForm {
+  background: var(--color-gray-semi);
+  margin: var(--space-small);
+  padding: var(--space-default);
+  display: inline-block;
+}
+
+.shade-click-area {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
 .one-line-input {
   display: flex;
   margin-bottom: var(--space-default);
@@ -10,44 +41,4 @@
 
 .one-line-input button {
   border-radius: 0 .25rem .25rem 0;
-}
-
-.color-selectors {
-  margin-bottom: var(--space-small);
-}
-
-.color-select {
-  appearance: none;
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;
-  display: inline-block;
-  outline: none;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: all .2s ease-in-out;
-}
-
-.color-select:hover {
-  transform: scale(1.1);
-}
-
-.color-select:checked {
-  box-shadow: 0 0 0 2px var(--color-gray-dark);
-}
-
-.color-select.DEFAULT {
-  background-color: var(--color-note-default)
-}
-
-.color-select.INFO {
-  background-color: var(--color-note-info)
-}
-
-.color-select.SUCCESS {
-  background-color: var(--color-note-success)
-}
-
-.color-select.DANGER {
-  background-color: var(--color-note-danger)
 }
