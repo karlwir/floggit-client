@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 
 import NotesWrapper from './NotesWrapper';
-import { removeNote } from '../../../reduxStore/config/notes';
+import { removeNote, filterNotes } from '../../../reduxStore/config/notes';
 import { openForm, loadNote } from '../../../reduxStore/config/note-form';
 
 const mapStateToProps = state => ({
-  notes: state.notes.data,
+  notes: state.notes.dataFiltered,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -17,6 +17,9 @@ const mapDispatchToProps = dispatch => ({
   },
   handleUpdateNote: (value) => {
     dispatch(loadNote(value));
+  },
+  handleFilter: (value) => {
+    dispatch(filterNotes(value));
   },
 });
 
