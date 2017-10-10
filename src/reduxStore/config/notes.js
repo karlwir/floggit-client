@@ -7,9 +7,11 @@ const NOTE_UPDATE = 'NOTE_UPDATE';
 const NOTES_LIST_REPLACE = 'NOTES_LIST_REPLACE';
 const NOTES_LOADING = 'NOTES_LOADING';
 const NOTES_LOADED = 'NOTES_LOADED';
+const NOTES_FILTER = 'NOTES_FILTER';
 
 const initialState = {
   data: [],
+  dataFiltered: [],
   isLoading: false,
 };
 
@@ -42,6 +44,22 @@ const reducer = (state = initialState, action) => {
     }
     case NOTES_LOADED: {
       return Object.assign({}, state, { isLoading: false });
+    }
+    case NOTES_FILTER: {
+      const filtered = state.data.filter(
+        (item) => {
+          if (item.title.toUpperCase().includes(action.value.toUpperCase())) return true;
+
+          let val = false;
+          item.information.forEach((subItem) => {
+            if (subItem.text.toUpperCase().includes(action.value.toUpperCase())) val = true;
+          });
+
+          return val;
+        });
+
+      return Object.assign({}, state,
+        { dataFiltered: [...filtered] });
     }
     default:
       return state;
@@ -90,12 +108,18 @@ const internalLoadedNotes = () => ({
   type: NOTES_LOADED,
 });
 
+const filterNotes = value => ({
+  type: NOTES_FILTER,
+  value,
+});
+
 // THUNK
 const addNote = value => dispatch => notesAPI.add(value.title, value.color, value.information)
   .then((id) => {
     const newValue = value;
     newValue.id = id;
     dispatch(internalAddNote(newValue));
+    dispatch(filterNotes(''));
   });
 
 const removeNote = id => dispatch => notesAPI.remove(id)
@@ -107,6 +131,7 @@ const updateNote = value => dispatch =>
   notesAPI.update(value)
     .then(() => {
       dispatch(internalUpdateNote(value));
+      dispatch(filterNotes(''));
     });
 
 const loadNotes = () => (dispatch) => {
@@ -115,11 +140,12 @@ const loadNotes = () => (dispatch) => {
     .then((notes) => {
       dispatch(internalReplaceAllNotes(notes));
       dispatch(internalLoadedNotes());
+      dispatch(filterNotes(''));
     })
     .catch(() => {
       dispatch(internalLoadedNotes());
     });
 };
 
-export { addNote, removeNote, updateNote, loadNotes };
+export { addNote, removeNote, updateNote, loadNotes, filterNotes };
 export default reducer;

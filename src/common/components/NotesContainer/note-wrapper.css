@@ -5,3 +5,7 @@
 button.create-note-button {
   margin-bottom: var(--space-default);
 }
+
+input.filter-text-input {
+  margin-bottom: var(--space-default);
+}
