@@ -37,6 +37,7 @@ const reducer = (state = initialState, action) => {
     case NOTES_LIST_REPLACE: {
       const newNotes = [...action.data.notes]
         .map(note => Object.assign({}, note, { display: true }));
+      newNotes.reverse();
       return Object.assign({}, state, { data: newNotes });
     }
     case NOTES_LOADING: {
