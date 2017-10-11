@@ -1,6 +1,5 @@
 button {
   display: inline-block;
-  font-weight: var(--font-weight-bold);
   background-color: var(--color-primary);
   line-height: var(--font-line-height-default);
   text-align: center;
@@ -11,6 +10,7 @@ button {
   color: var(--color-button-text);
   padding: 0.5rem 1rem;
   font-size: var(--font-size-default);
+  font-weight: var(--font-weight-bold);
   border-radius: var(--border-radius-small);
   transition: all var(--animation-timing-fast) ease-in-out;
   cursor: pointer;
