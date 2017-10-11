@@ -11,6 +11,18 @@ const NotesWrapper = (props) => {
     props.handleFilter(event.target.value);
   };
 
+  const renderSearchMessage = () => {
+    const notDisplayed = props.notes.filter(note => !note.display);
+    const displayed = props.notes.filter(note => note.display);
+    return notDisplayed.length > 0 ? (<div className="search-message">
+    Search matched
+      <strong>{displayed.length}</strong>
+    of
+      <strong>{props.notes.length}</strong>
+    notes
+    </div>) : '';
+  };
+
   return (
     <div className="NotesContainer-wrapper">
       <NoteFormContainer />
@@ -29,15 +41,7 @@ const NotesWrapper = (props) => {
             className="filter-text-input"
             onChange={handleFilter}
           />
-          {props.notes.length < props.allNotes.length ?
-            <div className="search-message">
-              Search matched
-              <strong>{props.notes.length}</strong>
-              of
-              <strong>{props.allNotes.length}</strong>
-              notes
-            </div>
-            : ''}
+          {renderSearchMessage()}
         </div>
       </div>
       <NoteList

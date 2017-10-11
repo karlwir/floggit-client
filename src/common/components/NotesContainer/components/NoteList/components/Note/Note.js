@@ -1,7 +1,7 @@
 import React from 'react';
 import notePropTypes from './Note.props';
 
-import './Note.css';
+import './note.css';
 
 const Note = (props) => {
   const remove = () => {
