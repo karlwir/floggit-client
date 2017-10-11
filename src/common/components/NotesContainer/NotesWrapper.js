@@ -14,19 +14,32 @@ const NotesWrapper = (props) => {
   return (
     <div className="NotesContainer-wrapper">
       <NoteFormContainer />
-      <button
-        type="button"
-        className="create-note-button"
-        onClick={props.handleCreateNoteNote}
-      >
-      Create new note
-      </button>
-      <input
-        type="text"
-        placeholder="Search"
-        className="filter-text-input"
-        onChange={handleFilter}
-      />
+      <div className="NotesContainer-toolbar">
+        <button
+          type="button"
+          className="create-note-button"
+          onClick={props.handleCreateNoteNote}
+        >
+        Create new note
+        </button>
+        <div>
+          <input
+            type="text"
+            placeholder="Search"
+            className="filter-text-input"
+            onChange={handleFilter}
+          />
+          {props.notes.length < props.allNotes.length ?
+            <div className="search-message">
+              Search matched
+              <strong>{props.notes.length}</strong>
+              of
+              <strong>{props.allNotes.length}</strong>
+              notes
+            </div>
+            : ''}
+        </div>
+      </div>
       <NoteList
         className="NoteList"
         notes={props.notes}
