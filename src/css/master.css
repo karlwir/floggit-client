@@ -1,5 +1,5 @@
 @import 'reset.css';
-@import 'https://fonts.googleapis.com/css?family=Raleway:200,400,600';
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200:400:600:800');
 @import 'variables/colors.css';
 @import 'variables/fonts.css';
 @import 'variables/spacers.css';

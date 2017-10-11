@@ -1,5 +1,6 @@
 :root {
-  --font-family-default: 'Raleway', sans-serif;
+  --font-family-default: 'Montserrat', sans-serif;
+  --font-family-ui: sans-serif;
   --font-size-s: 0.75rem;
   --font-size-default: 1rem;
   --font-size-l: 1.5rem;
@@ -8,6 +9,6 @@
   --font-line-height-default: 1.25rem;
   --font-line-height-l: 2rem;
   --font-weight-default: 400;
-  --font-weight-bold: 500;
-  --font-weight-extrabold: 600;
+  --font-weight-bold: 600;
+  --font-weight-extrabold: 800;
 }

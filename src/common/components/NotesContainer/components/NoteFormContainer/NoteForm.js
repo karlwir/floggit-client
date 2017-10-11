@@ -45,7 +45,7 @@ const NoteForm = (props) => {
         <button className="icon-button close" type="button" onClick={handleCloseForm}>
           <i className="fa fa-close" />
         </button>
-        {props.id ? 'Update note' : 'Create new note'}
+        <h3>{props.id ? 'Update note' : 'Create new note'}</h3>
         <input
           type="text"
           value={props.title}

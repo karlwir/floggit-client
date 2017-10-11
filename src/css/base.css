@@ -1,5 +1,5 @@
 body {
-  color: #333;
+  color: var(--color-text-default);
   font-family: var(--font-family-default);
   font-size: var(--font-size-default);
   font-weight: var(--font-weight-default);
@@ -13,9 +13,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-default);
   font-size: var(--font-size-default);
-  margin-bottom: var(--space-small);
+  margin-bottom: var(--space-default);
 }
 
 h1 {
