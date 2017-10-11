@@ -3,7 +3,7 @@ body {
   font-family: var(--font-family-default);
   font-size: var(--font-size-default);
   font-weight: var(--font-weight-default);
-  line-height: 1.25;
+  line-height: var(--font-line-height-default);
   background: var(--color-background-secondary);
 }
 
@@ -20,7 +20,7 @@ h6 {
 
 h1 {
   font-size: var(--font-size-xl);
-  line-height: 1;
+  line-height: var(--font-line-height-s);
 }
 
 h1 strong {
@@ -34,25 +34,6 @@ h2 {
 a {
   text-decoration: none;
   color: var(--color-primary);
-}
-
-input {
-    display: block;
-    padding: .5rem .75rem;
-    font-size: 1rem;
-    line-height: 1.25;
-    color: #464a4c;
-    background-color: #fff;
-    background-image: none;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border: 0;
-    border-radius: .25rem;
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
 }
 
 a:hover {
@@ -72,7 +53,7 @@ ul.generic-list li {
   margin: 0 var(--space-default) var(--space-default) var(--space-extra);
 }
 
-ul.generic-list  li:last-child {
+ul.generic-list li:last-child {
   margin-bottom: 0;
 }
 

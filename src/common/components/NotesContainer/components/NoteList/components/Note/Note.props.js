@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 const props = {
+  display: PropTypes.bool,
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import noteFormProps from './NoteForm.props';
-import './note-form.css';
+import './NoteForm.css';
 import ColorSelect from './components/ColorSelect';
 import { NOTE_COLORS } from '../../../../../utils/constants';
 

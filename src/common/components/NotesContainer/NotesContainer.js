@@ -5,8 +5,7 @@ import { removeNote, filterNotes } from '../../../reduxStore/config/notes';
 import { openForm, loadNote } from '../../../reduxStore/config/note-form';
 
 const mapStateToProps = state => ({
-  notes: state.notes.dataFiltered,
-  allNotes: state.notes.data,
+  notes: state.notes.data,
 });
 
 const mapDispatchToProps = dispatch => ({

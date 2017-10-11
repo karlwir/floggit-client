@@ -2,7 +2,7 @@ import React from 'react';
 
 import NoteFormContainer from './components/NoteFormContainer';
 import NoteList from './components/NoteList';
-import './note-wrapper.css';
+import './NotesWrapper.css';
 
 import notesWrapperProps from './NotesWrapper.props';
 
@@ -16,6 +16,18 @@ const NotesWrapper = (props) => {
     textInput.value = '';
     props.handleFilter('');
     textInput.focus();
+  };
+
+  const renderSearchMessage = () => {
+    const notDisplayed = props.notes.filter(note => !note.display);
+    const displayed = props.notes.filter(note => note.display);
+    return notDisplayed.length > 0 ? (<div className="search-message">
+    Search matched
+      <strong>{displayed.length}</strong>
+    of
+      <strong>{props.notes.length}</strong>
+    notes
+    </div>) : '';
   };
 
   return (
@@ -47,15 +59,7 @@ const NotesWrapper = (props) => {
             <i className="fa  fa-times-circle" />
           </span>
         </div>
-        {props.notes.length < props.allNotes.length ?
-          <div className="search-message">
-              Search matched
-            <strong>{props.notes.length}</strong>
-              of
-            <strong>{props.allNotes.length}</strong>
-              notes
-          </div>
-          : ''}
+        {renderSearchMessage()}
       </div>
       <NoteList
         className="NoteList"

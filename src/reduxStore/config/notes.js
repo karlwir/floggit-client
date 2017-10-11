@@ -1,4 +1,4 @@
-import notesAPI from '../../utils/repository/mongoAPI';
+import notesAPI from '../../utils/repository/notesAPI';
 
 // ACTIONS
 const NOTE_ADD = 'NOTES_ADD';
@@ -11,7 +11,6 @@ const NOTES_FILTER = 'NOTES_FILTER';
 
 const initialState = {
   data: [],
-  dataFiltered: [],
   isLoading: false,
 };
 
@@ -36,7 +35,8 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, { data: newNotes });
     }
     case NOTES_LIST_REPLACE: {
-      const newNotes = [...action.data.notes];
+      const newNotes = [...action.data.notes]
+        .map(note => Object.assign({}, note, { display: true }));
       return Object.assign({}, state, { data: newNotes });
     }
     case NOTES_LOADING: {
@@ -46,20 +46,17 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, { isLoading: false });
     }
     case NOTES_FILTER: {
-      const filtered = state.data.filter(
-        (item) => {
-          if (item.title.toUpperCase().includes(action.value.toUpperCase())) return true;
+      const newData = state.data.map((item) => {
+        let val = false;
+        if (item.title.toUpperCase().includes(action.value.toUpperCase())) val = true;
 
-          let val = false;
-          item.information.forEach((subItem) => {
-            if (subItem.text.toUpperCase().includes(action.value.toUpperCase())) val = true;
-          });
-
-          return val;
+        item.information.forEach((subItem) => {
+          if (subItem.text.toUpperCase().includes(action.value.toUpperCase())) val = true;
         });
 
-      return Object.assign({}, state,
-        { dataFiltered: [...filtered] });
+        return Object.assign({}, item, { display: val });
+      });
+      return Object.assign({}, state, { data: newData });
     }
     default:
       return state;
@@ -74,6 +71,7 @@ const internalAddNote = value => ({
     title: value.title,
     color: value.color,
     information: value.information,
+    display: true,
   },
 });
 
@@ -119,7 +117,6 @@ const addNote = value => dispatch => notesAPI.add(value.title, value.color, valu
     const newValue = value;
     newValue.id = id;
     dispatch(internalAddNote(newValue));
-    dispatch(filterNotes(''));
   });
 
 const removeNote = id => dispatch => notesAPI.remove(id)
@@ -131,7 +128,6 @@ const updateNote = value => dispatch =>
   notesAPI.update(value)
     .then(() => {
       dispatch(internalUpdateNote(value));
-      dispatch(filterNotes(''));
     });
 
 const loadNotes = () => (dispatch) => {
@@ -140,7 +136,6 @@ const loadNotes = () => (dispatch) => {
     .then((notes) => {
       dispatch(internalReplaceAllNotes(notes));
       dispatch(internalLoadedNotes());
-      dispatch(filterNotes(''));
     })
     .catch(() => {
       dispatch(internalLoadedNotes());

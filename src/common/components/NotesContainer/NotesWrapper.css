@@ -14,7 +14,7 @@ button.create-note-button {
 
 input.filter-text-input {
   display: inline-block;
-  margin:0 var(--space-default) var(--space-default) 0;
+  margin: 0 var(--space-default) var(--space-default) 0;
   padding-right: var(--space-extra);
 }
 
