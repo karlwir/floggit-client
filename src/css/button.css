@@ -1,21 +1,19 @@
 button {
-    display: inline-block;
-    font-weight: var(--font-weight-bold);
-    background-color: var(--color-primary);
-    line-height: 1.25;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    user-select: none;
-    border: 0;
-    color: #ffffff;
-    padding: .5rem 1rem;
-    font-size:  var(--font-size-default);
-    border-radius: .25rem;
-    -webkit-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
-    cursor: pointer;
+  display: inline-block;
+  font-weight: var(--font-weight-bold);
+  background-color: var(--color-primary);
+  line-height: var(--font-line-height-default);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 0;
+  color: var(--color-button-text);
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-default);
+  border-radius: var(--border-radius-small);
+  transition: all var(--animation-timing-fast) ease-in-out;
+  cursor: pointer;
 }
 
 button:hover {
@@ -26,7 +24,7 @@ button.icon-button {
   padding: 0;
   background-color: transparent;
   color: inherit;
-  border-radius: 50%;
+  border-radius: var(--border-radius-round);
   width: 2rem;
   height: 2rem;
   outline: none;
@@ -34,15 +32,28 @@ button.icon-button {
 
 button.icon-button.close {
   float: right;
-  margin: -.5rem -.5rem 0 0;
+  margin: -0.5rem -0.5rem 0 0;
 }
 
 button.icon-button:hover {
   transform: scale(1.1);
-  background-color: rgba(255,255,255,0.9);
-  color: var(--color-primary)
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--color-primary);
 }
 
 button.icon-button.danger:hover {
   color: var(--color-note-danger);
+}
+
+input {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  font-size: var(--font-size-default);
+  line-height: var(--font-line-height-default);
+  color: var(--color-gray-semi);
+  background-color: var(--color-background-primary);
+  background-image: none;
+  background-clip: padding-box;
+  border: 0;
+  border-radius: var(--border-radius-small);
 }

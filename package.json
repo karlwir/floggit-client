@@ -17,12 +17,15 @@
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.3.0"
+    "eslint-plugin-react": "^7.3.0",
+    "stylelint": "^8.0.0",
+    "stylelint-config-standard": "^17.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "npm run css-lint & npm run js-lint & react-scripts test --env=jsdom",
+    "css-lint": "node ./node_modules/stylelint/lib/cli.js 'src/**/*.css'",
     "js-lint": "node ./node_modules/eslint/bin/eslint.js 'src/**/*.js'",
     "eject": "react-scripts eject"
   }
