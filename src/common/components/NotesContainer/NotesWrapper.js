@@ -17,7 +17,7 @@ const NotesWrapper = (props) => {
     } else {
       clearButton.classList.remove('visible');
     }
-    props.handleFilter(event.target.value);
+    props.handleFilter(query);
   };
 
   const clearSearchField = () => {
@@ -26,14 +26,14 @@ const NotesWrapper = (props) => {
     props.handleFilter('');
   };
 
-  const renderSearchMessage = () => {
-    const notDisplayed = props.notes.filter(note => !note.display);
-    const displayed = props.notes.filter(note => note.display);
+  const renderSearchMessage = (notes) => {
+    const notDisplayed = notes.filter(note => !note.display);
+    const displayed = notes.filter(note => note.display);
     return notDisplayed.length > 0 ? (<div className="search-message">
     Search matched
       <strong>{displayed.length}</strong>
     of
-      <strong>{props.notes.length}</strong>
+      <strong>{notes.length}</strong>
     notes
     </div>) : '';
   };
@@ -68,7 +68,7 @@ const NotesWrapper = (props) => {
             <i className="fa fa-times-circle" />
           </span>
         </div>
-        {renderSearchMessage()}
+        {renderSearchMessage(props.notes)}
       </div>
       <NoteList
         className="NoteList"
