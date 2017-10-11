@@ -1,4 +1,4 @@
-import notesAPI from '../../utils/repository/mongoAPI';
+import notesAPI from '../../utils/repository/notesAPI';
 
 // ACTIONS
 const NOTE_ADD = 'NOTES_ADD';
