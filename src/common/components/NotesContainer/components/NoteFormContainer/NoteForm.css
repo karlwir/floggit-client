@@ -1,26 +1,11 @@
-.NoteForm-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  background: var(--color-shadow);
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.NoteForm-wrapper.hidden {
-  display: none;
-}
-
 .NoteForm {
   background: var(--color-gray-semi);
-  margin: var(--space-small);
+  margin: 0 var(--space-small) var(--space-small) 0;
   padding: var(--space-default);
   display: inline-block;
+  width: 280px;
   position: relative;
+  animation: fadeIn var(--animation-timing-fast) ease-out;
 }
 
 .shade-click-area {
@@ -42,4 +27,35 @@
 
 .one-line-input button {
   border-radius: 0 0.25rem 0.25rem 0;
+}
+
+div.NoteForm.DEFAULT {
+  background: linear-gradient(-45deg, transparent, transparent 	1.41421rem, var(--color-note-default) 	1.41421rem, var(--color-note-default));
+}
+
+div.NoteForm.INFO {
+  background: linear-gradient(-45deg, transparent, transparent 	1.41421rem, var(--color-note-info) 	1.41421rem, var(--color-note-info));
+}
+
+div.NoteForm.DANGER {
+  background: linear-gradient(-45deg, transparent, transparent 	1.41421rem, var(--color-note-danger) 	1.41421rem, var(--color-note-danger));
+}
+
+div.NoteForm.SUCCESS {
+  background: linear-gradient(-45deg, transparent, transparent 	1.41421rem, var(--color-note-success) 	1.41421rem, var(--color-note-success));
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+div.NoteForm::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-width: 2rem 2rem 0 0;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.15) transparent;
 }

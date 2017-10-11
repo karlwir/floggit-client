@@ -1,6 +1,5 @@
 import React from 'react';
 
-import NoteFormContainer from './components/NoteFormContainer';
 import NoteList from './components/NoteList';
 import './NotesWrapper.css';
 
@@ -40,7 +39,6 @@ const NotesWrapper = (props) => {
 
   return (
     <div className="NotesContainer-wrapper">
-      <NoteFormContainer />
       <div className="NotesContainer-toolbar">
         <button
           type="button"
@@ -73,6 +71,8 @@ const NotesWrapper = (props) => {
       <NoteList
         className="NoteList"
         notes={props.notes}
+        noteFormId={props.noteForm.id}
+        activeForm={props.noteForm.activeForm}
         onRemoveNote={props.handleRemoveNote}
         onUpdateNote={props.handleUpdateNote}
       />

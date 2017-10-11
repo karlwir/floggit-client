@@ -9,6 +9,7 @@ button {
   border: 0;
   color: var(--color-button-text);
   padding: 0.5rem 1rem;
+  margin: 0 var(--space-default) 0 0;
   font-size: var(--font-size-default);
   font-weight: var(--font-weight-bold);
   border-radius: var(--border-radius-small);
@@ -16,8 +17,18 @@ button {
   cursor: pointer;
 }
 
+button.secondary {
+  color: var(--color-primary);
+  background-color: #fff;
+}
+
 button:hover {
   background-color: var(--color-primary-light);
+}
+
+button.secondary:hover {
+  color: var(--color-primary-light);
+  background-color: #fff;
 }
 
 button.icon-button {
@@ -27,12 +38,8 @@ button.icon-button {
   border-radius: var(--border-radius-round);
   width: 2rem;
   height: 2rem;
+  margin: 0;
   outline: none;
-}
-
-button.icon-button.close {
-  float: right;
-  margin: -0.5rem -0.5rem 0 0;
 }
 
 button.icon-button:hover {
