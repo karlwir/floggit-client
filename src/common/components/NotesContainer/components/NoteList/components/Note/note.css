@@ -10,8 +10,7 @@ div.Note {
   position: relative;
   width: 280px;
   min-height: 175px;
-
-  animation: jumpIn 100ms ease-out;
+  animation: jumpIn var(--animation-timing-superfast) ease-out;
 }
 
 div.Note.DEFAULT {
@@ -31,20 +30,16 @@ div.Note.SUCCESS {
 }
 
 @keyframes jumpIn {
-    0%   {transform: scale(0);}
-    100% {transform: scale(1)}
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
 }
 
-div.note-toolbar{
-
-}
-
-div.Note:before {
-   content: "";
-   position: absolute;
-   bottom: 0;
-   right: 0;
-   border-width: 2rem 2rem 0 0;
-   border-style: solid;
-   border-color: rgba(0,0,0,.15) transparent;
+div.Note::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-width: 2rem 2rem 0 0;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.15) transparent;
 }

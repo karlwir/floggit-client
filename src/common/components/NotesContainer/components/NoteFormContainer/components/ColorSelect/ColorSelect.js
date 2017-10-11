@@ -1,6 +1,6 @@
 import React from 'react';
 import colorelectProps from './ColorSelect.props';
-import './color-select.css';
+import './ColorSelect.css';
 
 const ColorSelect = props => (
   <div className="color-selectors">

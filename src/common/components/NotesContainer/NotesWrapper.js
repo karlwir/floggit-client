@@ -2,7 +2,7 @@ import React from 'react';
 
 import NoteFormContainer from './components/NoteFormContainer';
 import NoteList from './components/NoteList';
-import './note-wrapper.css';
+import './NotesWrapper.css';
 
 import notesWrapperProps from './NotesWrapper.props';
 

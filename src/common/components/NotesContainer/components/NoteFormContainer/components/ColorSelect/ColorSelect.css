@@ -11,7 +11,7 @@
   outline: none;
   border: 2px solid transparent;
   cursor: pointer;
-  transition: all .2s ease-in-out;
+  transition: all var(--animation-timing-fast) ease-in-out;
 }
 
 .color-select:hover {
@@ -23,17 +23,17 @@
 }
 
 .color-select.DEFAULT {
-  background-color: var(--color-note-default)
+  background-color: var(--color-note-default);
 }
 
 .color-select.INFO {
-  background-color: var(--color-note-info)
+  background-color: var(--color-note-info);
 }
 
 .color-select.SUCCESS {
-  background-color: var(--color-note-success)
+  background-color: var(--color-note-success);
 }
 
 .color-select.DANGER {
-  background-color: var(--color-note-danger)
+  background-color: var(--color-note-danger);
 }
