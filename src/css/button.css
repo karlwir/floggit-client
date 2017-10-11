@@ -11,9 +11,7 @@ button {
     color: #ffffff;
     padding: .5rem 1rem;
     font-size:  var(--font-size-default);
-    border-radius: .25rem;
-    -webkit-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
+    border-radius: var(--border-radius-small);
     transition: all .2s ease-in-out;
     cursor: pointer;
 }
@@ -26,7 +24,7 @@ button.icon-button {
   padding: 0;
   background-color: transparent;
   color: inherit;
-  border-radius: 50%;
+  border-radius: var(--border-radius-round);
   width: 2rem;
   height: 2rem;
   outline: none;
@@ -45,4 +43,18 @@ button.icon-button:hover {
 
 button.icon-button.danger:hover {
   color: var(--color-note-danger);
+}
+
+input {
+  display: block;
+  padding: .5rem .75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #464a4c;
+  background-color: #fff;
+  background-image: none;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 0;
+  border-radius: var(--border-radius-small);
 }

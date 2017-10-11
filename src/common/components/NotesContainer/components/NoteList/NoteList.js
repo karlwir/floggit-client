@@ -1,7 +1,7 @@
 import React from 'react';
 import Note from './components/Note';
 import noteListProps from './NoteList.props';
-import './note-list.css';
+import './NoteList.css';
 
 const NoteList = props => (
   <ul className="NoteList">
