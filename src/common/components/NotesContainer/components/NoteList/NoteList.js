@@ -5,19 +5,20 @@ import './note-list.css';
 
 const NoteList = props => (
   <ul className="NoteList">
-    {props.notes.map(note => (
-      <li key={note.id}>
-        <Note
-          key={note.id}
-          id={note.id}
-          title={note.title}
-          color={note.color}
-          information={note.information}
-          onRemoveNote={props.onRemoveNote}
-          onUpdateNote={props.onUpdateNote}
-        />
-      </li>
-    ))}
+    {props.notes.filter(note => (note.display))
+      .map(note => (
+        <li key={note.id}>
+          <Note
+            key={note.id}
+            id={note.id}
+            title={note.title}
+            color={note.color}
+            information={note.information}
+            onRemoveNote={props.onRemoveNote}
+            onUpdateNote={props.onUpdateNote}
+          />
+        </li>
+      ))}
   </ul>
 );
 
