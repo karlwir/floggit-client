@@ -15,16 +15,46 @@ button.create-note-button {
 input.filter-text-input {
   display: inline-block;
   margin: 0 var(--space-default) var(--space-default) 0;
+  padding-right: var(--space-extra);
 }
 
 .NotesContainer-toolbar div.search-message {
   display: inline-block;
   font-size: var(--font-size-s);
+  line-height: var(--font-line-height-default);
   margin-bottom: var(--space-default);
+  padding: 0.4rem 0.7rem;
 }
 
 .NotesContainer-toolbar div.search-message strong {
   font-size: var(--font-size-default);
   font-weight: var(--font-weight-extrabold);
   margin: 0 var(--space-small);
+}
+
+.InputContainer {
+  width: 191px;
+  height: 36px;
+  position: relative;
+  margin-right: 20px;
+}
+
+.input-clear-button {
+  position: absolute;
+  display: none;
+  top: 50%;
+  right: -3%;
+  margin-left: -50%;
+  transform: translate(-50%, -50%);
+  outline: none;
+  cursor: pointer;
+  transition: color var(--animation-timing-fast) ease-in-out;
+}
+
+.input-clear-button:hover {
+  color: var(--color-primary);
+}
+
+.input-clear-button.visible {
+  display: block;
 }

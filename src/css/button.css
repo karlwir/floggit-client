@@ -50,7 +50,6 @@ input {
   padding: 0.5rem 0.75rem;
   font-size: var(--font-size-default);
   line-height: var(--font-line-height-default);
-  color: var(--color-gray-semi);
   background-color: var(--color-background-primary);
   background-image: none;
   background-clip: padding-box;
