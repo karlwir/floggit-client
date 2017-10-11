@@ -87,6 +87,7 @@ const internalUpdateNote = value => ({
     title: value.title,
     color: value.color,
     information: value.information,
+    display: true,
   },
 });
 
