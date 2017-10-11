@@ -113,23 +113,34 @@ const filterNotes = value => ({
 });
 
 // THUNK
-const addNote = value => dispatch => notesAPI.add(value.title, value.color, value.information)
-  .then((id) => {
-    const newValue = value;
-    newValue.id = id;
-    dispatch(internalAddNote(newValue));
-  });
+const addNote = value => (dispatch) => {
+  dispatch(internalLoadingNotes());
+  return notesAPI.add(value.title, value.color, value.information)
+    .then((id) => {
+      const newValue = value;
+      newValue.id = id;
+      dispatch(internalAddNote(newValue));
+      dispatch(internalLoadedNotes());
+    });
+};
 
-const removeNote = id => dispatch => notesAPI.remove(id)
-  .then(() => {
-    dispatch(internalRemoveNote(id));
-  });
+const removeNote = id => (dispatch) => {
+  dispatch(internalLoadingNotes());
+  return notesAPI.remove(id)
+    .then(() => {
+      dispatch(internalRemoveNote(id));
+      dispatch(internalLoadedNotes());
+    });
+};
 
-const updateNote = value => dispatch =>
-  notesAPI.update(value)
+const updateNote = value => (dispatch) => {
+  dispatch(internalLoadingNotes());
+  return notesAPI.update(value)
     .then(() => {
       dispatch(internalUpdateNote(value));
+      dispatch(internalLoadedNotes());
     });
+};
 
 const loadNotes = () => (dispatch) => {
   dispatch(internalLoadingNotes());
