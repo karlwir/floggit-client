@@ -10,6 +10,8 @@ const props = {
       text: PropTypes.string.isRequired,
     })),
   })),
+  noteFormId: PropTypes.string,
+  activeForm: PropTypes.bool.isRequired,
   onRemoveNote: PropTypes.func.isRequired,
   onUpdateNote: PropTypes.func.isRequired,
 };

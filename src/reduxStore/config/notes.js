@@ -18,7 +18,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case NOTE_ADD: {
-      const newNotes = [...state.data, action.data];
+      const newNotes = [action.data, ...state.data];
       return Object.assign({}, state, { data: newNotes });
     }
     case NOTE_REMOVE: {
