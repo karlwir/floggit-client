@@ -26,6 +26,12 @@ button:hover {
   background-color: var(--color-primary-light);
 }
 
+button:disabled {
+  background-color: var(--color-gray-light);
+  color: var(--color-gray-dark);
+  pointer-events: none;
+}
+
 button.secondary:hover {
   color: var(--color-primary-light);
   background-color: #fff;

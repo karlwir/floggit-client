@@ -6,6 +6,7 @@ import { openForm, loadNote } from '../../../reduxStore/config/note-form';
 
 const mapStateToProps = state => ({
   notes: state.notes.data,
+  notesLoading: state.notes.isLoading,
   noteForm: state.noteForm,
 });
 

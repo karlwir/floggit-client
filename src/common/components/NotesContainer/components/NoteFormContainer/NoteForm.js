@@ -40,14 +40,20 @@ const NoteForm = (props) => {
         value={props.title}
         onChange={handleChangeTitle}
         placeholder="Add title"
+        disabled={props.isLoading}
       /><br />
       <div className="one-line-input">
         <input
           type="text"
           placeholder="Add information"
+          disabled={props.isLoading}
           ref={(c) => { infoItemInput = c; }}
         />
-        <button type="button" onClick={handleAddInfoItem}>
+        <button
+          type="button"
+          onClick={handleAddInfoItem}
+          disabled={props.isLoading}
+        >
             Add
         </button>
       </div>
@@ -57,6 +63,7 @@ const NoteForm = (props) => {
             <button
               className="icon-button danger"
               type="button"
+              disabled={props.isLoading}
               onClick={() => handleRemoveInfoItem(infoItem.id)}
             >
               <i className="fa fa-trash" />
@@ -68,11 +75,21 @@ const NoteForm = (props) => {
         colors={NOTE_COLORS}
         selectedColor={props.color}
         onColorUpdate={handleChangeColor}
+        disabled={props.isLoading}
       />
-      <button type="button" onClick={handleSaveNote}>
+      <button
+        type="button"
+        onClick={handleSaveNote}
+        disabled={props.isLoading}
+      >
         {props.id ? 'Update note' : 'Save Note'}
       </button>
-      <button className="secondary" type="button" onClick={handleCloseForm}>
+      <button
+        className="secondary"
+        type="button"
+        onClick={handleCloseForm}
+        disabled={props.isLoading}
+      >
         Cancel
       </button>
     </div>

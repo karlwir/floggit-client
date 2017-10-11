@@ -42,6 +42,7 @@ const NotesWrapper = (props) => {
       <div className="NotesContainer-toolbar">
         <button
           type="button"
+          disabled={props.notesLoading}
           className="create-note-button"
           onClick={props.handleCreateNoteNote}
         >
@@ -67,6 +68,11 @@ const NotesWrapper = (props) => {
           </span>
         </div>
         {renderSearchMessage(props.notes)}
+        {props.notesLoading ?
+          <div className="load-spinner">
+            <i className="fa fa-cog fa-spin fa-2x fa-fw" />
+            Loading
+          </div> : '' }
       </div>
       <NoteList
         className="NoteList"
