@@ -21,7 +21,9 @@ input.filter-text-input {
 .NotesContainer-toolbar div.search-message {
   display: inline-block;
   font-size: var(--font-size-s);
+  line-height: var(--font-line-height-default);
   margin-bottom: var(--space-default);
+  padding: 0.4rem 0.7rem;
 }
 
 .NotesContainer-toolbar div.search-message strong {
@@ -39,8 +41,20 @@ input.filter-text-input {
 
 .input-clear-button {
   position: absolute;
+  display: none;
   top: 50%;
   right: -3%;
   margin-left: -50%;
   transform: translate(-50%, -50%);
+  outline: none;
+  cursor: pointer;
+  transition: color var(--animation-timing-fast) ease-in-out;
+}
+
+.input-clear-button:hover {
+  color: var(--color-primary);
+}
+
+.input-clear-button.visible {
+  display: block;
 }

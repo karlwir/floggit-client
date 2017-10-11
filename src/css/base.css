@@ -20,7 +20,7 @@ h6 {
 
 h1 {
   font-size: var(--font-size-xl);
-  line-height: var(--font-line-height-s);
+  line-height: var(--font-line-height-l);
 }
 
 h1 strong {

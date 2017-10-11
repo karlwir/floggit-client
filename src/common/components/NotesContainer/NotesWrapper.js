@@ -8,14 +8,22 @@ import notesWrapperProps from './NotesWrapper.props';
 
 const NotesWrapper = (props) => {
   let textInput;
+  let clearButton;
+
   const handleFilter = (event) => {
+    const query = event.target.value;
+    if (query.length > 0) {
+      clearButton.classList.add('visible');
+    } else {
+      clearButton.classList.remove('visible');
+    }
     props.handleFilter(event.target.value);
   };
 
   const clearSearchField = () => {
     textInput.value = '';
+    clearButton.classList.remove('visible');
     props.handleFilter('');
-    textInput.focus();
   };
 
   const renderSearchMessage = () => {
@@ -55,8 +63,9 @@ const NotesWrapper = (props) => {
             onClick={clearSearchField}
             role="button"
             tabIndex="0"
+            ref={(span) => { clearButton = span; }}
           >
-            <i className="fa  fa-times-circle" />
+            <i className="fa fa-times-circle" />
           </span>
         </div>
         {renderSearchMessage()}
