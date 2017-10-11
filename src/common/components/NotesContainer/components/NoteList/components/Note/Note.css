@@ -1,6 +1,3 @@
-@import '../../../../../../../css/variables/spacers.css';
-@import '../../../../../../../css/variables/colors.css';
-
 div.Note {
   display: flex;
   flex-direction: column;
