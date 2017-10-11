@@ -15,6 +15,7 @@ button.create-note-button {
 input.filter-text-input {
   display: inline-block;
   margin:0 var(--space-default) var(--space-default) 0;
+  padding-right: var(--space-extra);
 }
 
 .NotesContainer-toolbar div.search-message {
@@ -27,4 +28,19 @@ input.filter-text-input {
   font-size: var(--font-size-default);
   font-weight: var(--font-weight-extrabold);
   margin: 0 var(--space-small);
+}
+
+.InputContainer {
+  width: 191px;
+  height: 36px;
+  position: relative;
+  margin-right: 20px;
+}
+
+.input-clear-button {
+  position: absolute;
+  top: 50%;
+  right: -3%;
+  margin-left: -50%;
+  transform: translate(-50%, -50%);
 }
