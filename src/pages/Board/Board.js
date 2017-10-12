@@ -7,7 +7,7 @@ import '../../css/font-awesome.min.css';
 const Home = () => (
   <div className="HomeContainer">
     <PageHeader />
-    <NotesContainer />
+    BOARD
   </div>
 );
 
