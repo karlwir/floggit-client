@@ -4,7 +4,6 @@ import './ColorSelect.css';
 
 const ColorSelect = props => (
   <div className="color-selectors">
-    {props.slectedColor}
     {props.colors.map(color => (
       <input
         type="radio"
