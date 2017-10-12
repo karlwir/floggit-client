@@ -15,7 +15,7 @@ const Note = (props) => {
     <div className={`Note ${props.color}`}>
       <div className="note-content">
         <h2>{props.title}</h2>
-        <ul className="generic-list">
+        <ul className="generic-list information-list">
           {props.information.map(item => (
             <li key={item.id}> {item.text} </li>
           ))}
