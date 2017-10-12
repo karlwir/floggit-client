@@ -29,6 +29,7 @@ h1 strong {
 
 h2 {
   font-size: var(--font-size-l);
+  line-height: var(--font-line-height-medium);
 }
 
 a {
