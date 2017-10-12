@@ -26,6 +26,14 @@ div.Note.SUCCESS {
   background: linear-gradient(-45deg, transparent, transparent 	1.41421rem, var(--color-note-success) 	1.41421rem, var(--color-note-success));
 }
 
+div.Note h2 {
+  overflow: hidden;
+}
+
+div.Note .information-list li {
+  overflow: hidden;
+}
+
 @keyframes jumpIn {
   0% {
     opacity: 0;
