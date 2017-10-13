@@ -12,6 +12,10 @@ const NoteForm = (props) => {
     props.onTitleUpdate(event.target.value);
   };
 
+  const handleChangeBoardId = (event) => {
+    props.onBoardIdUpdate(event.target.value);
+  };
+
   const handleChangeColor = (event) => {
     props.onColorUpdate(event.target.value);
   };
@@ -26,6 +30,7 @@ const NoteForm = (props) => {
   };
 
   const handleSaveNote = () => {
+    props.onBoardIdUpdate(props.boardId);
     props.onSaveNote();
   };
 
@@ -41,6 +46,11 @@ const NoteForm = (props) => {
         onChange={handleChangeTitle}
         placeholder="Add title"
         disabled={props.isLoading}
+      /><br />
+      <input
+        type="hidden"
+        value={props.boardId}
+        onChange={handleChangeBoardId}
       /><br />
       <div className="one-line-input">
         <input

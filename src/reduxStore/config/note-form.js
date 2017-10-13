@@ -4,6 +4,7 @@ import { generateId } from '../../utils/helpers/uid-generator';
 // ACTIONS
 const NOTEFORM_LOAD_NOTE = 'NOTEFORM_LOAD_NOTE';
 const NOTEFORM_UPDATE_TITLE = 'NOTEFORM_UPDATE_TITLE';
+const NOTEFORM_UPDATE_BOARDID = 'NOTEFORM_UPDATE_BOARDID';
 const NOTEFORM_UPDATE_COLOR = 'NOTEFORM_UPDATE_COLOR';
 const NOTEFORM_ADD_INFOITEM = 'NOTEFORM_ADD_INFOITEM';
 const NOTEFORM_REMOVE_INFOITEM = 'NOTEFORM_REMOVE_INFOITEM';
@@ -13,6 +14,7 @@ const NOTEFORM_OPEN = 'NOTEFORM_OPEN';
 const initialState = {
   id: null,
   title: '',
+  boardId: 'board-id',
   color: 'DEFAULT',
   information: [],
   activeForm: false,
@@ -23,6 +25,9 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case NOTEFORM_UPDATE_TITLE: {
       return Object.assign({}, state, { title: action.value });
+    }
+    case NOTEFORM_UPDATE_BOARDID: {
+      return Object.assign({}, state, { boardId: action.value });
     }
     case NOTEFORM_LOAD_NOTE: {
       return Object.assign({}, action.value, { activeForm: true });
@@ -57,6 +62,11 @@ const loadNote = value => ({
 
 const updateTitle = value => ({
   type: NOTEFORM_UPDATE_TITLE,
+  value,
+});
+
+const updateBoardId = value => ({
+  type: NOTEFORM_UPDATE_BOARDID,
   value,
 });
 
@@ -107,6 +117,7 @@ export {
   closeForm,
   loadNote,
   updateTitle,
+  updateBoardId,
   updateColor,
   addInfoItem,
   removeInfoItem,

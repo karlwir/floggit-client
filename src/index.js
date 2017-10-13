@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './reduxStore';
 import Routes from '../src/Routes';
+
 import './css/master.css';
 
 ReactDOM.render(

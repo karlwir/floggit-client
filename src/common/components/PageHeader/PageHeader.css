@@ -4,6 +4,15 @@ header.PageHeader {
   padding: var(--space-default) var(--space-default) var(--space-small);
 }
 
+header.PageHeader a,
+header.PageHeader a:hover {
+  color: var(--color-text-default);
+}
+
+header.PageHeader a h1 {
+  display: inline-block;
+}
+
 div.logo {
   display: inline-block;
   box-sizing: border-box;

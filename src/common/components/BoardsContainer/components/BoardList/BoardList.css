@@ -1,0 +1,9 @@
+.BoardList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+}
+
+.BoardList > li {
+  display: inline-block;
+}

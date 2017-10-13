@@ -6,8 +6,8 @@ import Board from '../pages/Board';
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/board" exact component={Board} />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/board/:boardId" component={Board} />
     </Switch>
   </BrowserRouter>
 );

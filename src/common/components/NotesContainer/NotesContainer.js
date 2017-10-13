@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleCreateNoteNote: () => {
+  handleCreateNote: () => {
     dispatch(openForm());
   },
   handleRemoveNote: (value) => {
