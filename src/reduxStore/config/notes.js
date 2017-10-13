@@ -71,6 +71,7 @@ const internalAddNote = value => ({
     id: value.id,
     title: value.title,
     color: value.color,
+    boardId: value.boardId,
     information: value.information,
     display: true,
   },
@@ -87,6 +88,7 @@ const internalUpdateNote = value => ({
     id: value.id,
     title: value.title,
     color: value.color,
+    boardId: value.boardId,
     information: value.information,
     display: true,
   },
@@ -116,7 +118,7 @@ const filterNotes = value => ({
 // THUNK
 const addNote = value => (dispatch) => {
   dispatch(internalLoadingNotes());
-  return notesAPI.add(value.title, value.color, value.information)
+  return notesAPI.add(value.title, value.color, value.information, value.boardId)
     .then((id) => {
       const newValue = value;
       newValue.id = id;

@@ -1,0 +1,25 @@
+div.Board {
+  display: flex;
+  flex-direction: column;
+  margin: 0 var(--space-small) var(--space-small) 0;
+  position: relative;
+  min-height: 100px;
+  width: 280px;
+}
+
+div.Board a {
+  flex: 1;
+  background-color: var(--color-gray-semi);
+  padding: var(--space-default) var(--space-default) var(--space-extra);
+  transition: background-color var(--animation-timing-fast) ease-in-out;
+}
+
+div.Board a:hover {
+  background-color: var(--color-gray-light);
+}
+
+.Board-toolbar {
+  position: absolute;
+  bottom: var(--space-default);
+  left: var(--space-default);
+}

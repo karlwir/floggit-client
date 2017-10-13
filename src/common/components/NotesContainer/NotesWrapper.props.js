@@ -10,6 +10,7 @@ const propTypes = {
       text: PropTypes.string.isRequired,
     })),
   })),
+  boardId: PropTypes.string.isRequired,
   handleRemoveNote: PropTypes.func.isRequired,
   handleUpdateNote: PropTypes.func.isRequired,
 };

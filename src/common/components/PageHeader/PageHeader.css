@@ -1,0 +1,26 @@
+header.PageHeader {
+  display: flex;
+  border-bottom: 1px solid var(--color-gray-light);
+  padding: var(--space-default) var(--space-default) var(--space-small);
+}
+
+header.PageHeader a,
+header.PageHeader a:hover {
+  color: var(--color-text-default);
+}
+
+header.PageHeader a h1 {
+  display: inline-block;
+}
+
+div.logo {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 2rem;
+  width: 2rem;
+  border-width: 1rem;
+  border-style: double;
+  border-color: var(--color-note-default) var(--color-note-danger) var(--color-note-info) var(--color-note-success);
+  margin-right: var(--space-small);
+  transform: rotate(-45deg);
+}

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import NoteList from './components/NoteList';
-import './NotesWrapper.css';
+import BoardList from './components/BoardList';
+import './BoardsWrapper.css';
 
-import notesWrapperProps from './NotesWrapper.props';
+import boardsWrapperProps from './BoardsWrapper.props';
 
-const NotesWrapper = (props) => {
+const BoardsWrapper = (props) => {
   let textInput;
   let clearButton;
 
@@ -25,27 +25,28 @@ const NotesWrapper = (props) => {
     props.handleFilter('');
   };
 
-  const renderSearchMessage = (notes) => {
-    const notDisplayed = notes.filter(note => !note.display);
-    const displayed = notes.filter(note => note.display);
-    return notDisplayed.length > 0 ? (
-      <div className="search-message">
-        Search matched
-        <strong>{displayed.length}</strong>
-        notes
-      </div>) : '';
+  const renderSearchMessage = (boards) => {
+    const notDisplayed = boards.filter(board => !board.display);
+    const displayed = boards.filter(board => board.display);
+    return notDisplayed.length > 0 ? (<div className="search-message">
+    Search matched
+      <strong>{displayed.length}</strong>
+    of
+      <strong>{boards.length}</strong>
+    boards
+    </div>) : '';
   };
 
   return (
-    <div className="NotesContainer-wrapper">
-      <div className="NotesContainer-toolbar">
+    <div className="BoardsContainer-wrapper">
+      <div className="BoardsContainer-toolbar">
         <button
           type="button"
-          disabled={props.notesLoading}
+          disabled={props.boardsLoading}
           className="create-note-button"
-          onClick={props.handleCreateNote}
+          onClick={props.handleCreateBoard}
         >
-        Create new note
+        Create new board
         </button>
 
         <div className="InputContainer">
@@ -66,25 +67,22 @@ const NotesWrapper = (props) => {
             <i className="fa fa-times-circle" />
           </span>
         </div>
-        {renderSearchMessage(props.notes)}
-        {props.notesLoading ?
+        {renderSearchMessage(props.boards)}
+        {props.boardsLoading ?
           <div className="load-spinner">
             <i className="fa fa-cog fa-spin fa-2x fa-fw" />
             Loading
           </div> : '' }
       </div>
-      <NoteList
+      <BoardList
         className="NoteList"
-        notes={props.notes}
-        boardId={props.boardId}
-        noteFormId={props.noteForm.id}
-        activeForm={props.noteForm.activeForm}
-        onRemoveNote={props.handleRemoveNote}
-        onUpdateNote={props.handleUpdateNote}
+        boards={props.boards}
+        onRemoveBoard={props.handleRemoveBoard}
+        onUpdateBoard={props.handleUpdateBoard}
       />
     </div>
   );
 };
-NotesWrapper.propTypes = notesWrapperProps;
+BoardsWrapper.propTypes = boardsWrapperProps;
 
-export default NotesWrapper;
+export default BoardsWrapper;
