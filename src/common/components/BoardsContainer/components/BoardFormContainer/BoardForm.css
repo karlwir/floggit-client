@@ -1,11 +1,15 @@
 .BoardForm {
-  background: var(--color-gray-semi);
+  background-color: var(--color-gray-light);
   margin: 0 var(--space-small) var(--space-small) 0;
-  padding: var(--space-default);
   display: inline-block;
   width: 280px;
   position: relative;
+  border-radius: var(--border-radius-small);
   animation: fadeIn var(--animation-timing-fast) ease-out;
+}
+
+.BoardForm .inner-wrapper {
+  padding: var(--space-default);
 }
 
 @keyframes fadeIn {

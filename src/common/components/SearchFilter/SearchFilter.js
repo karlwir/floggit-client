@@ -5,6 +5,8 @@ import './SearchFilter.css';
 const SearchFilter = (props) => {
   let textInput;
   let clearButton;
+  let notDisplayed;
+  let displayed;
 
   const handleFilter = (event) => {
     const query = event.target.value;
@@ -23,13 +25,14 @@ const SearchFilter = (props) => {
   };
 
   const renderSearchMessage = (items) => {
-    const notDisplayed = items.filter(item => !item.display);
-    const displayed = items.filter(item => item.display);
-    return notDisplayed.length > 0 ? (<div className="search-message">
-    Search matched
-      <strong>{displayed.length}</strong>
-    items
-    </div>) : '';
+    notDisplayed = items.filter(item => !item.display);
+    displayed = items.filter(item => item.display);
+    return notDisplayed.length > 0 ? (
+      <div className={`search-message ${displayed.length === 0 ? 'no-hits' : ''}`}>
+        Search matched
+        <strong>{displayed.length}</strong>
+        items
+      </div>) : '';
   };
 
   return (

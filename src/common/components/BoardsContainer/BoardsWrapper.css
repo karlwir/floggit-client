@@ -1,8 +1,8 @@
-.BoardsContainer-wrapper {
+.BoardsWrapper {
   padding: var(--space-default);
 }
 
-.BoardsContainer-toolbar {
+.BoardsWrapper .toolbar {
   display: flex;
   flex-wrap: wrap;
 }

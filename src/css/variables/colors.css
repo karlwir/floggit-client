@@ -4,6 +4,8 @@
   --color-shadow: rgba(0, 0, 0, 0.5);
   --color-background-primary: #fff;
   --color-text-default: #333;
+  --color-text-success: #1cb871;
+  --color-text-danger: #f06060;
   --color-button-text: #fff;
   --color-background-secondary: #edf0f6;
   --color-gray-light: #dedede;
@@ -17,7 +19,7 @@
 
 div.BoardForm input.color-select.DEFAULT,
 div.NotesWrapper.DEFAULT,
-div.Board.DEFAULT::after {
+div.Board.DEFAULT::before {
   --color-note-default: #f2ebbf;
   --color-note-info: #f3b562;
   --color-note-success: #8cbeb2;
@@ -26,7 +28,7 @@ div.Board.DEFAULT::after {
 
 div.BoardForm input.color-select.TROPICAL,
 div.NotesWrapper.TROPICAL,
-div.Board.TROPICAL::after {
+div.Board.TROPICAL::before {
   --color-note-default: #daebf2;
   --color-note-info: #1ca5b8;
   --color-note-success: #1cb871;
@@ -35,7 +37,7 @@ div.Board.TROPICAL::after {
 
 div.BoardForm input.color-select.AUTUMN,
 div.NotesWrapper.AUTUMN,
-div.Board.AUTUMN::after {
+div.Board.AUTUMN::before {
   --color-note-default: #f8e7a2;
   --color-note-info: #2df2ff;
   --color-note-success: #e57661;
@@ -44,7 +46,7 @@ div.Board.AUTUMN::after {
 
 div.BoardForm input.color-select.NORDIC,
 div.NotesWrapper.NORDIC,
-div.Board.NORDIC::after {
+div.Board.NORDIC::before {
   --color-note-default: #e8e1d0;
   --color-note-info: #dce8d0;
   --color-note-success: #e4ffe9;

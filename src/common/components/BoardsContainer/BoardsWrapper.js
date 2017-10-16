@@ -8,11 +8,11 @@ import './BoardsWrapper.css';
 import boardsWrapperProps from './BoardsWrapper.props';
 
 const BoardsWrapper = props => (
-  <div className="BoardsContainer-wrapper">
+  <div className="BoardsWrapper">
     <div className="breadcrump">
       <h2>Boards</h2>
     </div>
-    <div className="BoardsContainer-toolbar">
+    <div className="toolbar">
       <button
         type="button"
         disabled={props.boardsLoading}

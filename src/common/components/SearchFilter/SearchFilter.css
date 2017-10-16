@@ -1,15 +1,22 @@
+div.SearchFilter {
+  margin-right: var(--space-extra);
+  margin-bottom: var(--space-default);
+}
+
 div.SearchFilter input.filter-text-input {
   display: inline-block;
-  margin: 0 var(--space-default) var(--space-default) 0;
   padding-right: var(--space-extra);
 }
 
 div.SearchFilter div.search-message {
   display: inline-block;
+  color: var(--color-text-success);
   font-size: var(--font-size-s);
   line-height: var(--font-line-height-default);
-  margin-bottom: var(--space-default);
-  padding: 0.4rem 0.7rem;
+}
+
+div.SearchFilter div.search-message.no-hits {
+  color: var(--color-text-danger);
 }
 
 div.SearchFilter div.search-message strong {
