@@ -1,4 +1,5 @@
 import boardsAPI from '../../utils/repository/boardsAPI';
+import { removeNotesByBoard } from './notes';
 
 // ACTIONS
 const BOARD_ADD = 'BOARDS_ADD';
@@ -133,6 +134,7 @@ const addBoard = value => (dispatch) => {
 
 const removeBoard = id => (dispatch) => {
   dispatch(internalLoadingBoards());
+  dispatch(removeNotesByBoard(id));
   return boardsAPI.remove(id)
     .then(() => {
       dispatch(internalRemoveBoard(id));

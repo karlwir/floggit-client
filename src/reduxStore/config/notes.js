@@ -136,6 +136,11 @@ const removeNote = id => (dispatch) => {
     });
 };
 
+const removeNotesByBoard = id => (dispatch, getState) => {
+  const toRemove = getState().notes.data.filter(note => note.boardId === id);
+  toRemove.forEach(note => dispatch(removeNote(note.id)));
+};
+
 const updateNote = value => (dispatch) => {
   dispatch(internalLoadingNotes());
   return notesAPI.update(value)
@@ -157,5 +162,5 @@ const loadNotes = () => (dispatch) => {
     });
 };
 
-export { addNote, removeNote, updateNote, loadNotes, filterNotes };
+export { addNote, removeNote, updateNote, loadNotes, filterNotes, removeNotesByBoard };
 export default reducer;
