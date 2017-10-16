@@ -67,3 +67,11 @@ div.load-spinner {
   align-items: center;
   margin-left: var(--space-small);
 }
+
+div.breadcrump {
+  margin-bottom: var(--space-default);
+}
+
+div.breadcrump h2 {
+  display: inline;
+}

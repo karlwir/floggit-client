@@ -77,6 +77,7 @@ const BoardsWrapper = (props) => {
       <BoardList
         className="NoteList"
         boards={props.boards}
+        onFocusBoard={props.handleFocusBoard}
         onRemoveBoard={props.handleRemoveBoard}
         onUpdateBoard={props.handleUpdateBoard}
       />

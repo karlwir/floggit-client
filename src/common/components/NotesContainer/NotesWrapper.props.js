@@ -11,6 +11,11 @@ const propTypes = {
     })),
   })),
   boardId: PropTypes.string.isRequired,
+  focusedBoard: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    colorTheme: PropTypes.string.isRequired,
+  }),
   handleRemoveNote: PropTypes.func.isRequired,
   handleUpdateNote: PropTypes.func.isRequired,
 };

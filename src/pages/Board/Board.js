@@ -3,12 +3,15 @@ import PageHeader from '../../common/components/PageHeader';
 import NotesContainer from '../../common/components/NotesContainer';
 import '../../css/master.css';
 import '../../css/font-awesome.min.css';
+import boardPropTypes from './Board.props';
 
-const Home = props => (
+const Board = props => (
   <div className="HomeContainer">
     <PageHeader />
     <NotesContainer boardId={props.match.params.boardId} />
   </div>
 );
 
-export default Home;
+Board.propTypes = boardPropTypes;
+
+export default Board;
