@@ -28,7 +28,8 @@ h1 strong {
   font-weight: var(--font-weight-extrabold);
 }
 
-h2 {
+h2,
+h3 {
   font-size: var(--font-size-l);
   line-height: var(--font-line-height-medium);
 }

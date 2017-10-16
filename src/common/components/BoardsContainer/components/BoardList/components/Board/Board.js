@@ -16,7 +16,7 @@ const Board = (props) => {
     <div className={`Board ${props.colorTheme}`}>
       <NavLink to={`/board/${props.id}`}>
         <div className="board-content">
-          <h2>{props.title}</h2>
+          <h3>{props.title}</h3>
         </div>
       </NavLink>
       <div className="Board-toolbar">
