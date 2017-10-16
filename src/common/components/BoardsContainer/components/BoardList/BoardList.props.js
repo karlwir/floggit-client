@@ -6,6 +6,8 @@ const props = {
     title: PropTypes.string.isRequired,
     colorTheme: PropTypes.string.isRequired,
   })),
+  boardFormId: PropTypes.string,
+  activeForm: PropTypes.bool.isRequired,
   onRemoveBoard: PropTypes.func.isRequired,
   onUpdateBoard: PropTypes.func.isRequired,
 };

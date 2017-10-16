@@ -6,6 +6,7 @@
   appearance: none;
   height: 2rem;
   width: 2rem;
+  padding: 0;
   border-radius: 50%;
   display: inline-block;
   outline: none;
@@ -36,4 +37,10 @@
 
 .color-select.DANGER {
   background-color: var(--color-note-danger);
+}
+
+.BoardForm .color-select {
+  background-color: transparent;
+  border-color: var(--color-note-default) var(--color-note-info) var(--color-note-success) var(--color-note-danger);
+  border-width: 1rem;
 }

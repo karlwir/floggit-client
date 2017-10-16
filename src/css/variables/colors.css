@@ -9,8 +9,44 @@
   --color-gray-light: #dedede;
   --color-gray-semi: #ccc;
   --color-gray-dark: #aaa;
-  --color-note-info: #a9bfe0;
-  --color-note-danger: #d2685e;
-  --color-note-success: #b9e0a9;
-  --color-note-default: #ecdc74;
+  --color-note-default: #f2ebbf;
+  --color-note-info: #f3b562;
+  --color-note-success: #8cbeb2;
+  --color-note-danger: #f06060;
+}
+
+div.BoardForm input.color-select.DEFAULT,
+div.NotesWrapper.DEFAULT,
+div.Board.DEFAULT::after {
+  --color-note-default: #f2ebbf;
+  --color-note-info: #f3b562;
+  --color-note-success: #8cbeb2;
+  --color-note-danger: #f06060;
+}
+
+div.BoardForm input.color-select.TROPICAL,
+div.NotesWrapper.TROPICAL,
+div.Board.TROPICAL::after {
+  --color-note-default: #daebf2;
+  --color-note-info: #1ca5b8;
+  --color-note-success: #1cb871;
+  --color-note-danger: #ff404c;
+}
+
+div.BoardForm input.color-select.AUTUMN,
+div.NotesWrapper.AUTUMN,
+div.Board.AUTUMN::after {
+  --color-note-default: #f8e7a2;
+  --color-note-info: #2df2ff;
+  --color-note-success: #e57661;
+  --color-note-danger: #a45162;
+}
+
+div.BoardForm input.color-select.NORDIC,
+div.NotesWrapper.NORDIC,
+div.Board.NORDIC::after {
+  --color-note-default: #e8e1d0;
+  --color-note-info: #dce8d0;
+  --color-note-success: #e4ffe9;
+  --color-note-danger: #fceee2;
 }

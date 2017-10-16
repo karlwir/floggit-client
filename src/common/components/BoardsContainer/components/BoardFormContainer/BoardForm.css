@@ -1,0 +1,14 @@
+.BoardForm {
+  background: var(--color-gray-semi);
+  margin: 0 var(--space-small) var(--space-small) 0;
+  padding: var(--space-default);
+  display: inline-block;
+  width: 280px;
+  position: relative;
+  animation: fadeIn var(--animation-timing-fast) ease-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

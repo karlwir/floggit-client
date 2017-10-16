@@ -43,7 +43,7 @@ const BoardsWrapper = (props) => {
         <button
           type="button"
           disabled={props.boardsLoading}
-          className="create-note-button"
+          className="create-board-button"
           onClick={props.handleCreateBoard}
         >
         Create new board
@@ -77,6 +77,8 @@ const BoardsWrapper = (props) => {
       <BoardList
         className="NoteList"
         boards={props.boards}
+        boardFormId={props.boardForm.id}
+        activeForm={props.boardForm.activeForm}
         onFocusBoard={props.handleFocusBoard}
         onRemoveBoard={props.handleRemoveBoard}
         onUpdateBoard={props.handleUpdateBoard}
