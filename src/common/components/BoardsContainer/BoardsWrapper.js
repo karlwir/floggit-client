@@ -1,6 +1,7 @@
 import React from 'react';
 
 import BoardList from './components/BoardList';
+import LoadSpinner from '../LoadSpinner';
 import './BoardsWrapper.css';
 
 import boardsWrapperProps from './BoardsWrapper.props';
@@ -39,6 +40,9 @@ const BoardsWrapper = (props) => {
 
   return (
     <div className="BoardsContainer-wrapper">
+      <div className="breadcrump">
+        <h2>Boards</h2>
+      </div>
       <div className="BoardsContainer-toolbar">
         <button
           type="button"
@@ -68,11 +72,7 @@ const BoardsWrapper = (props) => {
           </span>
         </div>
         {renderSearchMessage(props.boards)}
-        {props.boardsLoading ?
-          <div className="load-spinner">
-            <i className="fa fa-cog fa-spin fa-2x fa-fw" />
-            Loading
-          </div> : '' }
+        <LoadSpinner showWhen={props.boardsLoading} />
       </div>
       <BoardList
         className="NoteList"

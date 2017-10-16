@@ -10,6 +10,7 @@ const propTypes = {
       text: PropTypes.string.isRequired,
     })),
   })),
+  notesLoading: PropTypes.bool.isRequired,
   boardId: PropTypes.string.isRequired,
   focusedBoard: PropTypes.shape({
     id: PropTypes.string.isRequired,

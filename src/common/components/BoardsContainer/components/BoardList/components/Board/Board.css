@@ -5,6 +5,7 @@ div.Board {
   position: relative;
   min-height: 100px;
   width: 280px;
+  animation: jumpIn var(--animation-timing-superfast) ease-out;
 }
 
 div.Board a {

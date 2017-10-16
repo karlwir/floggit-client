@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NoteList from './components/NoteList';
+import LoadSpinner from '../LoadSpinner';
 import './NotesWrapper.css';
 
 import notesWrapperProps from './NotesWrapper.props';
@@ -51,6 +52,9 @@ class NotesWrapper extends React.Component {
       <div>
         {this.props.focusedBoard ?
           <div className={`NotesWrapper ${this.props.focusedBoard.colorTheme}`}>
+            <div className="breadcrump">
+              <NavLink to="/">Boards </NavLink> » <h2>{this.props.focusedBoard.title}</h2>
+            </div>
             <div className="NotesContainer-toolbar">
               <button
                 type="button"
@@ -80,16 +84,9 @@ class NotesWrapper extends React.Component {
                 </span>
               </div>
               {this.renderSearchMessage(this.props.notes)}
-              {this.props.notesLoading ?
-                <div className="load-spinner">
-                  <i className="fa fa-cog fa-spin fa-2x fa-fw" />
-                  Loading
-                </div> : '' }
+              <LoadSpinner showWhen={this.props.notesLoading} />
             </div>
             <div>
-              <div className="breadcrump">
-                <NavLink to="/">Boards </NavLink> » <h2>{this.props.focusedBoard.title}</h2>
-              </div>
               <NoteList
                 className="NoteList"
                 notes={this.props.notes}

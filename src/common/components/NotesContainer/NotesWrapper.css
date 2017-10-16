@@ -59,15 +59,6 @@ input.filter-text-input {
   display: block;
 }
 
-div.load-spinner {
-  height: 2.5rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-gray-semi);
-  display: flex;
-  align-items: center;
-  margin-left: var(--space-small);
-}
-
 div.breadcrump {
   margin-bottom: var(--space-default);
 }
