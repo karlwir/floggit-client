@@ -41,16 +41,16 @@ const NoteForm = (props) => {
   return (
     <div className={`NoteForm ${props.color}`}>
       <input
+        type="hidden"
+        value={props.boardId}
+        onChange={handleChangeBoardId}
+      />
+      <input
         type="text"
         value={props.title}
         onChange={handleChangeTitle}
         placeholder="Add title"
         disabled={props.isLoading}
-      /><br />
-      <input
-        type="hidden"
-        value={props.boardId}
-        onChange={handleChangeBoardId}
       /><br />
       <div className="one-line-input">
         <input
@@ -64,7 +64,7 @@ const NoteForm = (props) => {
           onClick={handleAddInfoItem}
           disabled={props.isLoading}
         >
-            Add
+          Add
         </button>
       </div>
       <ul className="generic-list info-list">

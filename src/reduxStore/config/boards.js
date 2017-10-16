@@ -4,6 +4,7 @@ import boardsAPI from '../../utils/repository/boardsAPI';
 const BOARD_ADD = 'BOARDS_ADD';
 const BOARD_REMOVE = 'BOARDS_REMOVE';
 const BOARD_UPDATE = 'BOARD_UPDATE';
+const BOARD_FOCUS = 'BOARD_FOCUS';
 const BOARDS_LIST_REPLACE = 'BOARDS_LIST_REPLACE';
 const BOARDS_LOADING = 'BOARDS_LOADING';
 const BOARDS_LOADED = 'BOARDS_LOADED';
@@ -11,7 +12,9 @@ const BOARDS_FILTER = 'BOARDS_FILTER';
 
 const initialState = {
   data: [],
+  focusedBoard: undefined,
   isLoading: false,
+  boardsLoaded: false,
 };
 
 // REDUCER
@@ -34,11 +37,15 @@ const reducer = (state = initialState, action) => {
       });
       return Object.assign({}, state, { data: newBoards });
     }
+    case BOARD_FOCUS: {
+      const boardToFocus = state.data.find(board => board.id === action.value);
+      return Object.assign({}, state, { focusedBoard: boardToFocus });
+    }
     case BOARDS_LIST_REPLACE: {
       const newBoards = [...action.data.boards]
         .map(board => Object.assign({}, board, { display: true }));
       newBoards.reverse();
-      return Object.assign({}, state, { data: newBoards });
+      return Object.assign({}, state, { data: newBoards, boardsLoaded: true });
     }
     case BOARDS_LOADING: {
       return Object.assign({}, state, { isLoading: true });
@@ -85,7 +92,6 @@ const internalUpdateBoard = value => ({
   },
 });
 
-
 const internalReplaceAllBoards = boards => ({
   type: BOARDS_LIST_REPLACE,
   data: {
@@ -103,6 +109,11 @@ const internalLoadedBoards = () => ({
 
 const filterBoards = value => ({
   type: BOARDS_FILTER,
+  value,
+});
+
+const internalFocusBoard = value => ({
+  type: BOARD_FOCUS,
   value,
 });
 
@@ -148,5 +159,20 @@ const loadBoards = () => (dispatch) => {
     });
 };
 
-export { addBoard, removeBoard, updateBoard, loadBoards, filterBoards };
+const focusBoard = id => (dispatch, getState) =>
+  new Promise((resolve) => {
+    if (getState().boards.boardsLoaded) {
+      resolve();
+    } else {
+      setTimeout(() => {
+        dispatch(focusBoard(id));
+      }, 100);
+    }
+  })
+    .then(() => {
+      dispatch(internalFocusBoard(id));
+    });
+
+
+export { addBoard, removeBoard, updateBoard, focusBoard, loadBoards, filterBoards };
 export default reducer;
