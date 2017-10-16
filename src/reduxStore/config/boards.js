@@ -75,6 +75,7 @@ const internalAddBoard = value => ({
     id: value.id,
     title: value.title,
     colorTheme: value.colorTheme,
+    display: true,
   },
 });
 
@@ -89,6 +90,7 @@ const internalUpdateBoard = value => ({
     id: value.id,
     title: value.title,
     colorTheme: value.colorTheme,
+    display: true,
   },
 });
 

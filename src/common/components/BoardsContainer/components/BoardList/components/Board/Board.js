@@ -23,7 +23,7 @@ const Board = (props) => {
         <button className="icon-button danger" type="button" onClick={remove}>
           <i className="fa fa-trash fa-lg" />
         </button>
-        <button className="icon-button" type="button" disabled onClick={edit}>
+        <button className="icon-button" type="button" onClick={edit}>
           <i className="fa fa-pencil fa-lg" />
         </button>
       </div>

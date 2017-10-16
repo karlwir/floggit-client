@@ -2,7 +2,7 @@ import React from 'react';
 
 import noteFormProps from './NoteForm.props';
 import './NoteForm.css';
-import ColorSelect from './components/ColorSelect';
+import ColorSelect from '../../../ColorSelect';
 import { NOTE_COLORS } from '../../../../../utils/constants';
 
 const NoteForm = (props) => {

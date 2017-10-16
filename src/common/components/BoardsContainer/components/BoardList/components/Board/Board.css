@@ -9,17 +9,40 @@ div.Board {
 
 div.Board a {
   flex: 1;
-  background-color: var(--color-gray-semi);
-  padding: var(--space-default) var(--space-default) var(--space-extra);
-  transition: background-color var(--animation-timing-fast) ease-in-out;
+  background-color: var(--color-gray-light);
+  border-radius: var(--border-radius-small);
+  padding: var(--space-default) var(--space-default) var(--space-extra) var(--space-mega);
+  transition: all var(--animation-timing-fast) ease-in-out;
 }
 
 div.Board a:hover {
-  background-color: var(--color-gray-light);
+  background-color: #fcfcfc;
 }
 
 .Board-toolbar {
   position: absolute;
   bottom: var(--space-default);
-  left: var(--space-default);
+  left: var(--space-extra);
+}
+
+div.Board::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 1rem;
+  background-image:
+    linear-gradient(
+      to top,
+      var(--color-note-danger) 0%,
+      var(--color-note-danger) 25%,
+      var(--color-note-default) 25%,
+      var(--color-note-default) 50%,
+      var(--color-note-success) 50%,
+      var(--color-note-success) 75%,
+      var(--color-note-info) 75%,
+      var(--color-note-info) 100%
+    );
 }
