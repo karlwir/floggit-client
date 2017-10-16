@@ -6,7 +6,7 @@ import { openForm, loadBoard } from '../../../reduxStore/config/board-form';
 
 const mapStateToProps = state => ({
   boards: state.boards.data,
-  boardsLoading: state.notes.boards,
+  boardsLoading: state.boards.isLoading,
   boardForm: state.boardForm,
 });
 

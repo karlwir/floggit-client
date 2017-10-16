@@ -39,6 +39,9 @@ const BoardsWrapper = (props) => {
 
   return (
     <div className="BoardsContainer-wrapper">
+      <div className="breadcrump">
+        <h2>Boards</h2>
+      </div>
       <div className="BoardsContainer-toolbar">
         <button
           type="button"

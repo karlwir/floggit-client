@@ -51,6 +51,9 @@ class NotesWrapper extends React.Component {
       <div>
         {this.props.focusedBoard ?
           <div className={`NotesWrapper ${this.props.focusedBoard.colorTheme}`}>
+            <div className="breadcrump">
+              <NavLink to="/">Boards </NavLink> » <h2>{this.props.focusedBoard.title}</h2>
+            </div>
             <div className="NotesContainer-toolbar">
               <button
                 type="button"
@@ -87,9 +90,6 @@ class NotesWrapper extends React.Component {
                 </div> : '' }
             </div>
             <div>
-              <div className="breadcrump">
-                <NavLink to="/">Boards </NavLink> » <h2>{this.props.focusedBoard.title}</h2>
-              </div>
               <NoteList
                 className="NoteList"
                 notes={this.props.notes}
