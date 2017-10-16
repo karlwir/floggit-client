@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NoteList from './components/NoteList';
+import LoadSpinner from '../LoadSpinner';
 import './NotesWrapper.css';
 
 import notesWrapperProps from './NotesWrapper.props';
@@ -83,11 +84,7 @@ class NotesWrapper extends React.Component {
                 </span>
               </div>
               {this.renderSearchMessage(this.props.notes)}
-              {this.props.notesLoading ?
-                <div className="load-spinner">
-                  <i className="fa fa-cog fa-spin fa-2x fa-fw" />
-                  Loading
-                </div> : '' }
+              <LoadSpinner showWhen={this.props.notesLoading} />
             </div>
             <div>
               <NoteList
