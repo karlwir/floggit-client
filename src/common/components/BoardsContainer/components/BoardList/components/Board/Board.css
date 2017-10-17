@@ -14,6 +14,11 @@ div.Board a {
   border-radius: var(--border-radius-small);
   padding: var(--space-default) var(--space-default) var(--space-extra) var(--space-mega);
   transition: all var(--animation-timing-fast) ease-in-out;
+  cursor: grab;
+}
+
+div.Board h3 {
+  cursor: pointer;
 }
 
 div.Board a:hover {

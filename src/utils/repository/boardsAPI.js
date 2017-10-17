@@ -22,10 +22,11 @@ const getAll = () => axios.get(`${SERVICE_URL}/v1/boards`)
     id: item._id,
     title: item.title,
     colorTheme: item.colorTheme,
+    priority: item.priority,
   })))
   .catch(err => err.message);
 
-const add = (title, colorTheme) =>
+const add = (title, colorTheme, priority) =>
   axios({
     headers: {
       'Content-Type': 'application/json',
@@ -33,7 +34,7 @@ const add = (title, colorTheme) =>
     },
     method: 'POST',
     url: `${SERVICE_URL}/v1/boards`,
-    data: JSON.stringify({ title, colorTheme }),
+    data: JSON.stringify({ title, colorTheme, priority }),
   })
     .then(validateStatus(201))
     .then(response => response.data.id)
@@ -55,6 +56,7 @@ const update = value =>
       id: value.id,
       title: value.title,
       colorTheme: value.colorTheme,
+      priority: value.priority,
     }),
   })
     .then(validateStatus(204))

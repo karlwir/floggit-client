@@ -31,6 +31,7 @@ const BoardsWrapper = props => (
       onFocusBoard={props.handleFocusBoard}
       onRemoveBoard={props.handleRemoveBoard}
       onUpdateBoard={props.handleUpdateBoard}
+      onSortBoard={props.handleSort}
     />
   </div>
 );

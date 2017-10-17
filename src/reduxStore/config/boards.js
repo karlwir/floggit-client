@@ -10,6 +10,7 @@ const BOARDS_LIST_REPLACE = 'BOARDS_LIST_REPLACE';
 const BOARDS_LOADING = 'BOARDS_LOADING';
 const BOARDS_LOADED = 'BOARDS_LOADED';
 const BOARDS_FILTER = 'BOARDS_FILTER';
+const BOARDS_SORT = 'BOARDS_SORT';
 
 const initialState = {
   data: [],
@@ -45,7 +46,7 @@ const reducer = (state = initialState, action) => {
     case BOARDS_LIST_REPLACE: {
       const newBoards = [...action.data.boards]
         .map(board => Object.assign({}, board, { display: true }));
-      newBoards.reverse();
+      newBoards.sort((a, b) => a.priority - b.priority);
       return Object.assign({}, state, { data: newBoards, boardsLoaded: true });
     }
     case BOARDS_LOADING: {
@@ -63,6 +64,31 @@ const reducer = (state = initialState, action) => {
         return Object.assign({}, item, { display: match });
       });
       return Object.assign({}, state, { data: newData });
+    }
+    case BOARDS_SORT: {
+      const allBoards = [...state.data];
+      const element = allBoards[action.value.oldIndex];
+      allBoards.splice(action.value.oldIndex, 1);
+
+      const higherPrioBoard = allBoards[action.value.newIndex - 1];
+      const lowerPrioBoard = allBoards[action.value.newIndex];
+
+      let newPrio = element.priority;
+      if (higherPrioBoard && lowerPrioBoard) {
+        const higherPrio = higherPrioBoard.priority;
+        const lowerPrio = lowerPrioBoard.priority;
+        newPrio = higherPrio + ((lowerPrio - higherPrio) / 2);
+      } else if (higherPrioBoard && !lowerPrioBoard) {
+        const higherPrio = higherPrioBoard.priority;
+        newPrio = higherPrio * 2;
+      } else if (!higherPrioBoard && lowerPrioBoard) {
+        const lowerPrio = lowerPrioBoard.priority;
+        newPrio = lowerPrio / 2;
+      }
+      element.priority = newPrio;
+      allBoards.splice(action.value.newIndex, 0, element);
+      const newBoards = [...allBoards];
+      return Object.assign({}, state, { data: newBoards });
     }
     default:
       return state;
@@ -120,6 +146,11 @@ const internalFocusBoard = value => ({
   value,
 });
 
+const internalSortBoards = value => ({
+  type: BOARDS_SORT,
+  value,
+});
+
 // THUNK
 const addBoard = value => (dispatch) => {
   dispatch(internalLoadingBoards());
@@ -151,6 +182,16 @@ const updateBoard = value => (dispatch) => {
     });
 };
 
+const sortBoards = value => (dispatch, getState) => {
+  if (value.newIndex !== value.oldIndex) {
+    dispatch(internalLoadingBoards());
+    dispatch(internalSortBoards(value));
+    const allBoards = getState().boards.data;
+    const sortedBoard = allBoards[value.newIndex];
+    dispatch(updateBoard(sortedBoard));
+  }
+};
+
 const loadBoards = () => (dispatch) => {
   dispatch(internalLoadingBoards());
   return boardsAPI.getAll()
@@ -178,5 +219,5 @@ const focusBoard = id => (dispatch, getState) =>
     });
 
 
-export { addBoard, removeBoard, updateBoard, focusBoard, loadBoards, filterBoards };
+export { addBoard, removeBoard, updateBoard, focusBoard, loadBoards, filterBoards, sortBoards };
 export default reducer;

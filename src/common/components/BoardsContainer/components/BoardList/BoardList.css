@@ -7,3 +7,23 @@
 .BoardList > li {
   display: inline-block;
 }
+
+li.BoardList-drag-helper {
+  list-style: none;
+  border-radius: var(--border-radius-small);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+  padding: 0;
+  width: auto !important;
+  height: auto !important;
+}
+
+li.BoardList-drag-helper div.Board {
+  pointer-events: all;
+  cursor: grabbing;
+  margin: 0 !important;
+}
+
+li.BoardList-drag-helper div.Board a {
+  background-color: #fcfcfc;
+  cursor: grabbing;
+}

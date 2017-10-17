@@ -8,6 +8,7 @@ const props = {
   })),
   boardFormId: PropTypes.string,
   activeForm: PropTypes.bool.isRequired,
+  onSortBoard: PropTypes.func.isRequired,
   onRemoveBoard: PropTypes.func.isRequired,
   onUpdateBoard: PropTypes.func.isRequired,
 };

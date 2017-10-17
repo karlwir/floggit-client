@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import BoardsWrapper from './BoardsWrapper';
-import { removeBoard, filterBoards } from '../../../reduxStore/config/boards';
+import { removeBoard, filterBoards, sortBoards } from '../../../reduxStore/config/boards';
 import { openForm, loadBoard } from '../../../reduxStore/config/board-form';
 
 const mapStateToProps = state => ({
@@ -22,6 +22,9 @@ const mapDispatchToProps = dispatch => ({
   },
   handleFilter: (value) => {
     dispatch(filterBoards(value));
+  },
+  handleSort: (value) => {
+    dispatch(sortBoards(value));
   },
 });
 

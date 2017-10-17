@@ -10,9 +10,15 @@
 
 li.NoteList-drag-helper {
   list-style: none;
+  border-radius: 0 0 3.5rem;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+  padding: 0;
+  width: auto !important;
+  height: auto !important;
 }
 
 li.NoteList-drag-helper div.Note {
   pointer-events: all;
   cursor: grabbing;
+  margin: 0 !important;
 }
