@@ -13,8 +13,10 @@ const props = {
   noteFormId: PropTypes.string,
   activeForm: PropTypes.bool.isRequired,
   boardId: PropTypes.string.isRequired,
+  boardColorTheme: PropTypes.string.isRequired,
   onRemoveNote: PropTypes.func.isRequired,
   onUpdateNote: PropTypes.func.isRequired,
+  onSortNote: PropTypes.func.isRequired,
 };
 
 export default props;

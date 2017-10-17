@@ -8,6 +8,7 @@ const NOTES_LIST_REPLACE = 'NOTES_LIST_REPLACE';
 const NOTES_LOADING = 'NOTES_LOADING';
 const NOTES_LOADED = 'NOTES_LOADED';
 const NOTES_FILTER = 'NOTES_FILTER';
+const NOTES_SORT = 'NOTES_SORT';
 
 const initialState = {
   data: [],
@@ -37,7 +38,7 @@ const reducer = (state = initialState, action) => {
     case NOTES_LIST_REPLACE: {
       const newNotes = [...action.data.notes]
         .map(note => Object.assign({}, note, { display: true }));
-      newNotes.reverse();
+      newNotes.sort((a, b) => a.priority - b.priority);
       return Object.assign({}, state, { data: newNotes });
     }
     case NOTES_LOADING: {
@@ -59,6 +60,35 @@ const reducer = (state = initialState, action) => {
       });
       return Object.assign({}, state, { data: newData });
     }
+    case NOTES_SORT: {
+      const boardId = action.value.collection;
+
+      const allNotes = [...state.data];
+      const boardNotes = allNotes.filter(note => note.boardId === boardId);
+      const otherNotes = allNotes.filter(note => note.boardId !== boardId);
+      const element = boardNotes[action.value.oldIndex];
+      boardNotes.splice(action.value.oldIndex, 1);
+
+      const higherPrioNote = boardNotes[action.value.newIndex - 1];
+      const lowerPrioNote = boardNotes[action.value.newIndex];
+
+      let newPrio = element.priority;
+      if (higherPrioNote && lowerPrioNote) {
+        const higherPrio = higherPrioNote.priority;
+        const lowerPrio = lowerPrioNote.priority;
+        newPrio = higherPrio + ((lowerPrio - higherPrio) / 2);
+      } else if (higherPrioNote && !lowerPrioNote) {
+        const higherPrio = higherPrioNote.priority;
+        newPrio = higherPrio * 2;
+      } else if (!higherPrioNote && lowerPrioNote) {
+        const lowerPrio = lowerPrioNote.priority;
+        newPrio = lowerPrio / 2;
+      }
+      element.priority = newPrio;
+      boardNotes.splice(action.value.newIndex, 0, element);
+      const newNotes = [...otherNotes, ...boardNotes];
+      return Object.assign({}, state, { data: newNotes });
+    }
     default:
       return state;
   }
@@ -73,6 +103,7 @@ const internalAddNote = value => ({
     color: value.color,
     boardId: value.boardId,
     information: value.information,
+    priority: value.priority,
     display: true,
   },
 });
@@ -90,6 +121,7 @@ const internalUpdateNote = value => ({
     color: value.color,
     boardId: value.boardId,
     information: value.information,
+    priority: value.priority,
     display: true,
   },
 });
@@ -115,13 +147,28 @@ const filterNotes = value => ({
   value,
 });
 
+const internalSortNote = value => ({
+  type: NOTES_SORT,
+  value,
+});
+
 // THUNK
-const addNote = value => (dispatch) => {
+const addNote = value => (dispatch, getState) => {
   dispatch(internalLoadingNotes());
-  return notesAPI.add(value.title, value.color, value.information, value.boardId)
+  let notePriority;
+  const allNotes = getState().notes.data;
+  const boardNotes = allNotes.filter(note => note.boardId === value.boardId);
+  if (boardNotes.length > 0) {
+    const boardPrios = boardNotes.map(note => note.priority);
+    notePriority = Math.min(...boardPrios) / 2;
+  } else {
+    notePriority = 1;
+  }
+  return notesAPI.add(value.title, value.color, value.information, value.boardId, notePriority)
     .then((id) => {
       const newValue = value;
       newValue.id = id;
+      newValue.priority = notePriority;
       dispatch(internalAddNote(newValue));
       dispatch(internalLoadedNotes());
     });
@@ -141,6 +188,7 @@ const removeNotesByBoard = id => (dispatch, getState) => {
   toRemove.forEach(note => dispatch(removeNote(note.id)));
 };
 
+
 const updateNote = value => (dispatch) => {
   dispatch(internalLoadingNotes());
   return notesAPI.update(value)
@@ -148,6 +196,17 @@ const updateNote = value => (dispatch) => {
       dispatch(internalUpdateNote(value));
       dispatch(internalLoadedNotes());
     });
+};
+
+const sortNotes = value => (dispatch, getState) => {
+  if (value.newIndex !== value.oldIndex) {
+    dispatch(internalLoadingNotes());
+    dispatch(internalSortNote(value));
+    const allNotes = getState().notes.data;
+    const sortedBoardNotes = allNotes.filter(note => note.boardId === value.collection);
+    const sortedNote = sortedBoardNotes[value.newIndex];
+    dispatch(updateNote(sortedNote));
+  }
 };
 
 const loadNotes = () => (dispatch) => {
@@ -162,5 +221,5 @@ const loadNotes = () => (dispatch) => {
     });
 };
 
-export { addNote, removeNote, updateNote, loadNotes, filterNotes, removeNotesByBoard };
+export { addNote, removeNote, updateNote, loadNotes, filterNotes, removeNotesByBoard, sortNotes };
 export default reducer;

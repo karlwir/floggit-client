@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import NotesWrapper from './NotesWrapper';
-import { removeNote, filterNotes } from '../../../reduxStore/config/notes';
+import { removeNote, filterNotes, sortNotes } from '../../../reduxStore/config/notes';
 import { focusBoard } from '../../../reduxStore/config/boards';
 import { openForm, loadNote } from '../../../reduxStore/config/note-form';
 
@@ -27,6 +27,9 @@ const mapDispatchToProps = dispatch => ({
   },
   handleFilter: (value) => {
     dispatch(filterNotes(value));
+  },
+  handleSortNote: (value) => {
+    dispatch(sortNotes(value));
   },
 });
 

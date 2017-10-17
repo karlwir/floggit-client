@@ -7,3 +7,12 @@
 .NoteList > li {
   display: inline-block;
 }
+
+li.NoteList-drag-helper {
+  list-style: none;
+}
+
+li.NoteList-drag-helper div.Note {
+  pointer-events: all;
+  cursor: grabbing;
+}

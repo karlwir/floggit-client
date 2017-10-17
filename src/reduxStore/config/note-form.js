@@ -14,7 +14,7 @@ const NOTEFORM_OPEN = 'NOTEFORM_OPEN';
 const initialState = {
   id: null,
   title: '',
-  boardId: 'board-id',
+  boardId: '',
   color: 'DEFAULT',
   information: [],
   activeForm: false,

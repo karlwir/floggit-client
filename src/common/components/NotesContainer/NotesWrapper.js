@@ -41,10 +41,12 @@ class NotesWrapper extends React.Component {
               <NoteList
                 notes={this.props.notes}
                 boardId={this.props.boardId}
+                boardColorTheme={this.props.focusedBoard.colorTheme}
                 noteFormId={this.props.noteForm.id}
                 activeForm={this.props.noteForm.activeForm}
                 onRemoveNote={this.props.handleRemoveNote}
                 onUpdateNote={this.props.handleUpdateNote}
+                onSortNote={this.props.handleSortNote}
               />
             </div>
           </div>
