@@ -42,6 +42,8 @@ const SortableList = SortableContainer(({
   <ul className="NoteList">
     {activeForm && !noteFormId ?
       <li><NoteFormContainer boardId={boardId} /></li> : '' }
+    {activeForm && !noteFormId ?
+      <li><NoteFormContainer boardId={boardId} /></li> : null }
     {items.map((value, index) => (
       <SortableItem
         key={value.id}

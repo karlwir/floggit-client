@@ -36,7 +36,7 @@ const SortableList = SortableContainer(({
   boardFormId,
 }) => (
   <ul className="BoardList">
-    {activeForm && boardFormId ?
+    {activeForm && !boardFormId ?
       <li><BoardFormContainer /></li> : '' }
     {items.map((value, index) => (
       <SortableItem
