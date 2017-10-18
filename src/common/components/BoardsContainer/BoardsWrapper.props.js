@@ -7,6 +7,9 @@ const propTypes = {
   })),
   handleRemoveBoard: PropTypes.func.isRequired,
   handleFilter: PropTypes.func.isRequired,
+  boardsCount: PropTypes.number.isRequired,
+  boardsCountUnfiltered: PropTypes.number.isRequired,
+  searchQuery: PropTypes.string.isRequired,
 };
 
 export default propTypes;

@@ -27,17 +27,16 @@ const SortableList = SortableContainer(({ items, onRemoveBoard, onUpdateBoard, p
   <ul className="BoardList">
     {props.activeForm && !props.boardFormId ?
       <li><BoardFormContainer /></li> : '' }
-    {items.filter(board => (board.display))
-      .map((value, index) => (
-        <SortableItem
-          key={value.id}
-          index={index}
-          value={value}
-          onRemoveBoard={onRemoveBoard}
-          onUpdateBoard={onUpdateBoard}
-          props={props}
-        />
-      ))}
+    {items.map((value, index) => (
+      <SortableItem
+        key={value.id}
+        index={index}
+        value={value}
+        onRemoveBoard={onRemoveBoard}
+        onUpdateBoard={onUpdateBoard}
+        props={props}
+      />
+    ))}
   </ul>
 ));
 
