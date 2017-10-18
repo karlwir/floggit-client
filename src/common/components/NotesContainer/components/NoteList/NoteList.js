@@ -28,9 +28,7 @@ const SortableList = SortableContainer(({ items, onRemoveNote, onUpdateNote, pro
   <ul className="NoteList">
     {props.activeForm && !props.noteFormId ?
       <li><NoteFormContainer boardId={props.boardId} /></li> : '' }
-    {items.filter(note =>
-      (note.display) && props.boardId === note.boardId,
-    ).map((value, index) => (
+    {items.map((value, index) => (
       <SortableItem
         key={value.id}
         index={index}

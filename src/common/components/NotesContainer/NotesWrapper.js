@@ -15,6 +15,7 @@ class NotesWrapper extends React.Component {
 
   componentWillMount() {
     this.props.handleFocusBoard(this.props.boardId);
+    this.props.handleFilter(this.props.searchQuery);
   }
 
   render() {
@@ -34,7 +35,13 @@ class NotesWrapper extends React.Component {
               >
                 Create new note
               </button>
-              <SearchFilter handleFilter={this.props.handleFilter} items={this.props.notes} />
+              <SearchFilter
+                itemsCount={this.props.notesCount}
+                itemsCountUnfiltered={this.props.notesCountUnfiltered}
+                history={this.props.history}
+                searchQuery={this.props.searchQuery}
+                handleFilter={this.props.handleFilter}
+              />
               <LoadSpinner showWhen={this.props.notesLoading} />
             </div>
             <div>

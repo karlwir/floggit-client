@@ -1,39 +1,48 @@
 import React from 'react';
+import { stringify } from 'query-string';
 import searchFilterProps from './SearchFilter.props';
 import './SearchFilter.css';
 
 const SearchFilter = (props) => {
   let textInput;
   let clearButton;
-  let notDisplayed;
-  let displayed;
+  const location = props.history.location;
+  const history = props.history;
 
   const handleFilter = (event) => {
-    const query = event.target.value;
-    if (query.length > 0) {
+    const queryObject = { search: event.target.value };
+    if (queryObject.search.length > 0) {
       clearButton.classList.add('visible');
+      history.replace({
+        pathname: location.pathname,
+        search: `?${stringify(queryObject)}`,
+      });
     } else {
       clearButton.classList.remove('visible');
+      history.replace({
+        pathname: location.pathname,
+      });
     }
-    props.handleFilter(query);
+    props.handleFilter(queryObject.search);
   };
 
   const clearSearchField = () => {
     textInput.value = '';
     clearButton.classList.remove('visible');
+    history.replace({
+      pathname: location.pathname,
+    });
     props.handleFilter('');
   };
 
-  const renderSearchMessage = (items) => {
-    notDisplayed = items.filter(item => !item.display);
-    displayed = items.filter(item => item.display);
-    return notDisplayed.length > 0 ? (
-      <div className={`search-message ${displayed.length === 0 ? 'no-hits' : ''}`}>
-        Search matched
-        <strong>{displayed.length}</strong>
-        items
-      </div>) : '';
-  };
+  const renderSearchMessage = (itemsCountUnfiltered, itemsCount) =>
+    (itemsCountUnfiltered > itemsCount ? (
+      <div className={`search-message ${itemsCount === 0 ? 'no-hits' : ''}`}>
+          Search matched
+        <strong>{itemsCount}</strong>
+          of
+        <strong>{itemsCountUnfiltered}</strong>
+      </div>) : '');
 
   return (
     <div className="SearchFilter">
@@ -43,6 +52,7 @@ const SearchFilter = (props) => {
           placeholder="Search"
           className="filter-text-input"
           onChange={handleFilter}
+          value={props.searchQuery}
           ref={(input) => { textInput = input; }}
         />
         <span
@@ -55,7 +65,7 @@ const SearchFilter = (props) => {
           <i className="fa fa-times-circle" />
         </span>
       </div>
-      {renderSearchMessage(props.items)}
+      {renderSearchMessage(props.itemsCountUnfiltered, props.itemsCount)}
     </div>
   );
 };

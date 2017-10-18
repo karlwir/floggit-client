@@ -1,4 +1,5 @@
 import notesAPI from '../../utils/repository/notesAPI';
+import { calculatePrio } from '../../utils/helpers/prio-calculator';
 
 // ACTIONS
 const NOTE_ADD = 'NOTES_ADD';
@@ -13,6 +14,7 @@ const NOTES_SORT = 'NOTES_SORT';
 const initialState = {
   data: [],
   isLoading: false,
+  searchQuery: '',
 };
 
 // REDUCER
@@ -48,17 +50,7 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, { isLoading: false });
     }
     case NOTES_FILTER: {
-      const newData = state.data.map((item) => {
-        let val = false;
-        if (item.title.toUpperCase().includes(action.value.toUpperCase())) val = true;
-
-        item.information.forEach((subItem) => {
-          if (subItem.text.toUpperCase().includes(action.value.toUpperCase())) val = true;
-        });
-
-        return Object.assign({}, item, { display: val });
-      });
-      return Object.assign({}, state, { data: newData });
+      return Object.assign({}, state, { searchQuery: action.value });
     }
     case NOTES_SORT: {
       const boardId = action.value.collection;
@@ -68,22 +60,9 @@ const reducer = (state = initialState, action) => {
       const otherNotes = allNotes.filter(note => note.boardId !== boardId);
       const element = boardNotes[action.value.oldIndex];
       boardNotes.splice(action.value.oldIndex, 1);
-
       const higherPrioNote = boardNotes[action.value.newIndex - 1];
       const lowerPrioNote = boardNotes[action.value.newIndex];
-
-      let newPrio = element.priority;
-      if (higherPrioNote && lowerPrioNote) {
-        const higherPrio = higherPrioNote.priority;
-        const lowerPrio = lowerPrioNote.priority;
-        newPrio = higherPrio + ((lowerPrio - higherPrio) / 2);
-      } else if (higherPrioNote && !lowerPrioNote) {
-        const higherPrio = higherPrioNote.priority;
-        newPrio = higherPrio * 2;
-      } else if (!higherPrioNote && lowerPrioNote) {
-        const lowerPrio = lowerPrioNote.priority;
-        newPrio = lowerPrio / 2;
-      }
+      const newPrio = calculatePrio(element, higherPrioNote, lowerPrioNote);
       element.priority = newPrio;
       boardNotes.splice(action.value.newIndex, 0, element);
       const newNotes = [...otherNotes, ...boardNotes];
@@ -104,7 +83,6 @@ const internalAddNote = value => ({
     boardId: value.boardId,
     information: value.information,
     priority: value.priority,
-    display: true,
   },
 });
 
@@ -122,7 +100,6 @@ const internalUpdateNote = value => ({
     boardId: value.boardId,
     information: value.information,
     priority: value.priority,
-    display: true,
   },
 });
 
@@ -162,7 +139,7 @@ const addNote = value => (dispatch, getState) => {
     const boardPrios = boardNotes.map(note => note.priority);
     notePriority = Math.min(...boardPrios) / 2;
   } else {
-    notePriority = 1;
+    notePriority = 10;
   }
   return notesAPI.add(value.title, value.color, value.information, value.boardId, notePriority)
     .then((id) => {

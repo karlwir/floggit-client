@@ -21,7 +21,13 @@ const BoardsWrapper = props => (
       >
       Create new board
       </button>
-      <SearchFilter handleFilter={props.handleFilter} items={props.boards} />
+      <SearchFilter
+        itemsCount={props.boardsCount}
+        itemsCountUnfiltered={props.boardsCountUnfiltered}
+        history={props.history}
+        searchQuery={props.searchQuery}
+        handleFilter={props.handleFilter}
+      />
       <LoadSpinner showWhen={props.boardsLoading} />
     </div>
     <BoardList

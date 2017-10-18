@@ -10,8 +10,11 @@ const propTypes = {
       text: PropTypes.string.isRequired,
     })),
   })),
+  notesCount: PropTypes.number.isRequired,
+  notesCountUnfiltered: PropTypes.number.isRequired,
   notesLoading: PropTypes.bool.isRequired,
   boardId: PropTypes.string.isRequired,
+  searchQuery: PropTypes.string.isRequired,
   focusedBoard: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

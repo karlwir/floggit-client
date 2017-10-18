@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 
 const props = {
   handleFilter: PropTypes.func.isRequired,
-  items: PropTypes.arrayOf(PropTypes.shape({
-    display: PropTypes.bool.isRequired,
-  })),
+  searchQuery: PropTypes.string.isRequired,
+  itemsCount: PropTypes.number.isRequired,
+  itemsCountUnfiltered: PropTypes.number.isRequired,
 };
 
 export default props;

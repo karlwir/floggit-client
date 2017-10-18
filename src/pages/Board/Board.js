@@ -8,7 +8,11 @@ import boardPropTypes from './Board.props';
 const Board = props => (
   <div className="HomeContainer">
     <PageHeader />
-    <NotesContainer boardId={props.match.params.boardId} />
+    <NotesContainer
+      history={props.history}
+      searchQuery={props.location.search}
+      boardId={props.match.params.boardId}
+    />
   </div>
 );
 

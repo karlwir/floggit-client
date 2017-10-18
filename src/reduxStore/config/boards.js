@@ -1,5 +1,6 @@
 import boardsAPI from '../../utils/repository/boardsAPI';
 import { removeNotesByBoard } from './notes';
+import { calculatePrio } from '../../utils/helpers/prio-calculator';
 
 // ACTIONS
 const BOARD_ADD = 'BOARDS_ADD';
@@ -17,6 +18,7 @@ const initialState = {
   focusedBoard: undefined,
   isLoading: false,
   boardsLoaded: false,
+  searchQuery: '',
 };
 
 // REDUCER
@@ -56,35 +58,15 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, { isLoading: false });
     }
     case BOARDS_FILTER: {
-      const newData = state.data.map((item) => {
-        let match = false;
-        if (item.title.toUpperCase().includes(action.value.toUpperCase())) {
-          match = true;
-        }
-        return Object.assign({}, item, { display: match });
-      });
-      return Object.assign({}, state, { data: newData });
+      return Object.assign({}, state, { searchQuery: action.value });
     }
     case BOARDS_SORT: {
       const allBoards = [...state.data];
       const element = allBoards[action.value.oldIndex];
       allBoards.splice(action.value.oldIndex, 1);
-
       const higherPrioBoard = allBoards[action.value.newIndex - 1];
       const lowerPrioBoard = allBoards[action.value.newIndex];
-
-      let newPrio = element.priority;
-      if (higherPrioBoard && lowerPrioBoard) {
-        const higherPrio = higherPrioBoard.priority;
-        const lowerPrio = lowerPrioBoard.priority;
-        newPrio = higherPrio + ((lowerPrio - higherPrio) / 2);
-      } else if (higherPrioBoard && !lowerPrioBoard) {
-        const higherPrio = higherPrioBoard.priority;
-        newPrio = higherPrio * 2;
-      } else if (!higherPrioBoard && lowerPrioBoard) {
-        const lowerPrio = lowerPrioBoard.priority;
-        newPrio = lowerPrio / 2;
-      }
+      const newPrio = calculatePrio(element, higherPrioBoard, lowerPrioBoard);
       element.priority = newPrio;
       allBoards.splice(action.value.newIndex, 0, element);
       const newBoards = [...allBoards];
@@ -102,7 +84,7 @@ const internalAddBoard = value => ({
     id: value.id,
     title: value.title,
     colorTheme: value.colorTheme,
-    display: true,
+    priority: value.priority,
   },
 });
 
@@ -117,7 +99,7 @@ const internalUpdateBoard = value => ({
     id: value.id,
     title: value.title,
     colorTheme: value.colorTheme,
-    display: true,
+    priority: value.priority,
   },
 });
 
@@ -152,12 +134,21 @@ const internalSortBoards = value => ({
 });
 
 // THUNK
-const addBoard = value => (dispatch) => {
+const addBoard = value => (dispatch, getState) => {
   dispatch(internalLoadingBoards());
-  return boardsAPI.add(value.title, value.colorTheme)
+  let boardPriority;
+  const allBoards = getState().boards.data;
+  if (allBoards.length > 0) {
+    const prios = allBoards.map(board => board.priority);
+    boardPriority = Math.min(...prios) / 2;
+  } else {
+    boardPriority = 10;
+  }
+  return boardsAPI.add(value.title, value.colorTheme, boardPriority)
     .then((id) => {
       const newValue = value;
       newValue.id = id;
+      newValue.priority = boardPriority;
       dispatch(internalAddBoard(newValue));
       dispatch(internalLoadedBoards());
     });
