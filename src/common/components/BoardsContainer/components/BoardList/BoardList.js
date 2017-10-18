@@ -5,10 +5,15 @@ import boardListProps from './BoardList.props';
 import BoardFormContainer from '../BoardFormContainer';
 import './BoardList.css';
 
-
-const SortableItem = SortableElement(({ value, onRemoveBoard, onUpdateBoard, props }) => (
+const SortableItem = SortableElement(({
+  value,
+  onRemoveBoard,
+  onUpdateBoard,
+  activeForm,
+  boardFormId,
+}) => (
   <li key={value.id} className="BoardList-item">
-    {props.activeForm && value.id === props.boardFormId ?
+    {activeForm && value.id === boardFormId ?
       <BoardFormContainer /> :
       <Board
         key={value.id}
@@ -23,9 +28,15 @@ const SortableItem = SortableElement(({ value, onRemoveBoard, onUpdateBoard, pro
 ),
 );
 
-const SortableList = SortableContainer(({ items, onRemoveBoard, onUpdateBoard, props }) => (
+const SortableList = SortableContainer(({
+  items,
+  onRemoveBoard,
+  onUpdateBoard,
+  activeForm,
+  boardFormId,
+}) => (
   <ul className="BoardList">
-    {props.activeForm && !props.boardFormId ?
+    {activeForm && boardFormId ?
       <li><BoardFormContainer /></li> : '' }
     {items.map((value, index) => (
       <SortableItem
@@ -34,7 +45,8 @@ const SortableList = SortableContainer(({ items, onRemoveBoard, onUpdateBoard, p
         value={value}
         onRemoveBoard={onRemoveBoard}
         onUpdateBoard={onUpdateBoard}
-        props={props}
+        activeForm={activeForm}
+        boardFormId={boardFormId}
       />
     ))}
   </ul>
@@ -49,7 +61,8 @@ const BoardList = props => (
     onSortEnd={props.onSortBoard}
     onRemoveBoard={props.onRemoveBoard}
     onUpdateBoard={props.onUpdateBoard}
-    props={props}
+    activeForm={props.activeForm}
+    boardFormId={props.boardFormId}
   />
 );
 

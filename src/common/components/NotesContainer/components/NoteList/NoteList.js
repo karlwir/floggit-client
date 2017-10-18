@@ -5,10 +5,17 @@ import NoteFormContainer from '../NoteFormContainer';
 import noteListProps from './NoteList.props';
 import './NoteList.css';
 
-const SortableItem = SortableElement(({ value, onRemoveNote, onUpdateNote, props }) => (
+const SortableItem = SortableElement(({
+  value,
+  onRemoveNote,
+  onUpdateNote,
+  activeForm,
+  noteFormId,
+  boardId,
+}) => (
   <li key={value.id} className="NoteList-item">
-    {props.activeForm && value.id === props.noteFormId ?
-      <NoteFormContainer boardId={props.boardId} /> :
+    {activeForm && value.id === noteFormId ?
+      <NoteFormContainer boardId={boardId} /> :
       <Note
         key={value.id}
         id={value.id}
@@ -24,19 +31,28 @@ const SortableItem = SortableElement(({ value, onRemoveNote, onUpdateNote, props
 ),
 );
 
-const SortableList = SortableContainer(({ items, onRemoveNote, onUpdateNote, props }) => (
+const SortableList = SortableContainer(({
+  items,
+  onRemoveNote,
+  onUpdateNote,
+  activeForm,
+  noteFormId,
+  boardId,
+}) => (
   <ul className="NoteList">
-    {props.activeForm && !props.noteFormId ?
-      <li><NoteFormContainer boardId={props.boardId} /></li> : '' }
+    {activeForm && !noteFormId ?
+      <li><NoteFormContainer boardId={boardId} /></li> : '' }
     {items.map((value, index) => (
       <SortableItem
         key={value.id}
         index={index}
         value={value}
-        collection={props.boardId}
+        collection={boardId}
         onRemoveNote={onRemoveNote}
         onUpdateNote={onUpdateNote}
-        props={props}
+        activeForm={activeForm}
+        noteFormId={noteFormId}
+        boardId={boardId}
       />
     ))}
   </ul>
@@ -51,7 +67,9 @@ const NoteList = props => (
     onSortEnd={props.onSortNote}
     onRemoveNote={props.onRemoveNote}
     onUpdateNote={props.onUpdateNote}
-    props={props}
+    activeForm={props.activeForm}
+    noteFormId={props.noteFormId}
+    boardId={props.boardId}
   />
 );
 
