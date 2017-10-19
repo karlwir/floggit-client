@@ -54,6 +54,7 @@ class NotesWrapper extends React.Component {
                 onRemoveNote={this.props.handleRemoveNote}
                 onUpdateNote={this.props.handleUpdateNote}
                 onSortNote={this.props.handleSortNote}
+                notesCountUnfiltered={this.props.notesCountUnfiltered}
               />
             </div>
           </div>

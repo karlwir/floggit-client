@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: start;
+  animation: slideIn var(--animation-timing-fast) ease-out;
 }
 
 .BoardList > li {
@@ -26,4 +27,16 @@ li.BoardList-drag-helper div.Board {
 li.BoardList-drag-helper div.Board a {
   background-color: #fcfcfc;
   cursor: grabbing;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

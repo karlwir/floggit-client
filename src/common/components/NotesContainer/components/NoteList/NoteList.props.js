@@ -13,6 +13,7 @@ const props = {
   noteFormId: PropTypes.string,
   activeForm: PropTypes.bool.isRequired,
   boardId: PropTypes.string.isRequired,
+  notesCountUnfiltered: PropTypes.number.isRequired,
   boardColorTheme: PropTypes.string.isRequired,
   onRemoveNote: PropTypes.func.isRequired,
   onUpdateNote: PropTypes.func.isRequired,

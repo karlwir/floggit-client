@@ -27,8 +27,7 @@ button:hover {
 }
 
 button:disabled {
-  background-color: var(--color-gray-light);
-  color: var(--color-gray-dark);
+  opacity: 0.8;
   pointer-events: none;
 }
 
@@ -55,7 +54,7 @@ button.icon-button:hover {
 }
 
 button.icon-button.danger:hover {
-  color: var(--color-note-danger);
+  color: var(--color-text-danger);
 }
 
 input {

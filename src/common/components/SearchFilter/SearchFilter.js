@@ -12,13 +12,11 @@ const SearchFilter = (props) => {
   const handleFilter = (event) => {
     const queryObject = { search: event.target.value };
     if (queryObject.search.length > 0) {
-      clearButton.classList.add('visible');
       history.replace({
         pathname: location.pathname,
         search: `?${stringify(queryObject)}`,
       });
     } else {
-      clearButton.classList.remove('visible');
       history.replace({
         pathname: location.pathname,
       });
@@ -56,7 +54,7 @@ const SearchFilter = (props) => {
           ref={(input) => { textInput = input; }}
         />
         <span
-          className="input-clear-button"
+          className={`input-clear-button ${props.searchQuery.length > 0 ? 'visible' : ''}`}
           onClick={clearSearchField}
           role="button"
           tabIndex="0"
