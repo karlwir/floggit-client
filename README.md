@@ -10,6 +10,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Redux-thunk
 
 ## Running
-npm i
-npm run start
-(backend service on free hosting, might need ~20s startup)
+- npm i
+- npm run start
+- (backend service on free hosting, might need ~20s startup)
